@@ -1,0 +1,20 @@
+{
+  "name": "Community Craft V3",
+  "mc_version": "1.20.1",
+  "forge_version": "47.3.0",
+  "pack_version": "3.1",
+  "mods": [
+    {
+      "name": "JEI",
+      "filename": "jei-1.20.1-forge-15.3.0.4.jar",
+      "url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/.../jei-1.20.1-forge.jar",
+      "sha256": "abc123..."
+    },
+    {
+      "name": "Create",
+      "filename": "create-1.20.1-0.5.1.jar",
+      "url": "https://edge.forgecdn.net/files/...",
+      "sha256": "def456..."
+    }
+  ]
+}
