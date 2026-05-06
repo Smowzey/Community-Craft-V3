@@ -2,19 +2,238 @@
   "name": "Community Craft V3",
   "mc_version": "1.20.1",
   "forge_version": "47.3.0",
-  "pack_version": "3.1",
+  "pack_version": "1.0",
   "mods": [
     {
-      "name": "JEI",
-      "filename": "jei-1.20.1-forge-15.3.0.4.jar",
-      "url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/.../jei-1.20.1-forge.jar",
-      "sha256": "abc123..."
+      "name": "Waystones",
+      "filename": "waystones-forge-1.20.1-14.1.20.jar",
+      "curseforge_project_id": 245755,
+      "curseforge_file_id": 7682270,
+      "sha256": ""
     },
     {
-      "name": "Create",
-      "filename": "create-1.20.1-0.5.1.jar",
-      "url": "https://edge.forgecdn.net/files/...",
-      "sha256": "def456..."
+      "name": "Butchery",
+      "filename": "butchery-4.9-forge-1.20.1.jar",
+      "curseforge_project_id": 973620,
+      "curseforge_file_id": 7974743,
+      "sha256": ""
+    },
+    {
+      "name": "Chovy's Apocalypse",
+      "filename": "chovys_apocalypse_mod-1.9.jar",
+      "curseforge_project_id": 1201158,
+      "curseforge_file_id": 6771864,
+      "sha256": ""
+    },
+    {
+      "name": "Simple Voice Chat",
+      "filename": "voicechat-bukkit-2.6.17.jar",
+      "curseforge_project_id": 498303,
+      "curseforge_file_id": 8037815,
+      "sha256": ""
+    },
+    {
+      "name": "LoginMod",
+      "filename": "loginsystem-1.6.jar",
+      "curseforge_project_id": 1217786,
+      "curseforge_file_id": 7912610,
+      "sha256": ""
+    },
+    {
+      "name": "Extra Gore",
+      "filename": "extragore-1.20.1-5.2.3.1.jar",
+      "curseforge_project_id": 937006,
+      "curseforge_file_id": 5398532,
+      "sha256": ""
+    },
+    {
+      "name": "Simply Traps",
+      "filename": "simply_traps-1.7-forge-1.20.1.jar",
+      "curseforge_project_id": 1172014,
+      "curseforge_file_id": 6980501,
+      "sha256": ""
+    },
+    {
+      "name": "Bunker Down",
+      "filename": "bunker-down 1-1-6 - 1-20-1.jar",
+      "curseforge_project_id": 628560,
+      "curseforge_file_id": 4806699,
+      "sha256": ""
+    },
+    {
+      "name": "The Lost Cities",
+      "filename": "lostcities-1.20-7.4.11.jar",
+      "curseforge_project_id": 269024,
+      "curseforge_file_id": 7432706,
+      "sha256": ""
+    },
+    {
+      "name": "Zombie Apocalypse Essentials",
+      "filename": "Keerdm Zombie Apocalypse Essentials (TACZ) 1.42.jar",
+      "curseforge_project_id": 1061079,
+      "curseforge_file_id": 7740113,
+      "sha256": ""
+    },
+    {
+      "name": "ChaosZPack LostCities",
+      "filename": "chaoszpack v.1.4.1 TacZ.jar",
+      "curseforge_project_id": 1222668,
+      "curseforge_file_id": 7801045,
+      "sha256": ""
+    },
+    {
+      "name": "Underground Bunkers",
+      "filename": "UndergroundBunkers-1.0.5-1.20.x-forge.jar",
+      "curseforge_project_id": 961418,
+      "curseforge_file_id": 5727027,
+      "sha256": ""
+    },
+    {
+      "name": "Bad Mobs",
+      "filename": "BadMobs-1.20.1-19.0.4.jar",
+      "curseforge_project_id": 233258,
+      "curseforge_file_id": 5086469,
+      "sha256": ""
+    },
+    {
+      "name": "Mob Sunscreen",
+      "filename": "mobsunscreen-forge-1.20.1-3.1.1.jar",
+      "curseforge_project_id": 298408,
+      "curseforge_file_id": 4647106,
+      "sha256": ""
+    },
+    {
+      "name": "No Baby Zombies",
+      "filename": "nobz-1.3.jar",
+      "curseforge_project_id": 959336,
+      "curseforge_file_id": 7266607,
+      "sha256": ""
+    },
+    {
+      "name": "No Rest for the Wicked",
+      "filename": "norest-1.0.3-BETA.jar",
+      "curseforge_project_id": 1218594,
+      "curseforge_file_id": 7400184,
+      "sha256": ""
+    },
+    {
+      "name": "Zombie Awareness",
+      "filename": "zombieawareness-1.20.1-1.13.1.jar",
+      "curseforge_project_id": 237754,
+      "curseforge_file_id": 5096285,
+      "sha256": ""
+    },
+    {
+      "name": "We Got Runners",
+      "filename": "wegotrunnners-0.7.1.1.20.1[SPANISH TRANSLATION UPDATE].jar",
+      "curseforge_project_id": 531381,
+      "curseforge_file_id": 5509865,
+      "sha256": ""
+    },
+    {
+      "name": "The Hordes",
+      "filename": "The-Hordes-1.20.1-1.6.3e-all.jar",
+      "curseforge_project_id": 485779,
+      "curseforge_file_id": 8027309,
+      "sha256": ""
+    },
+    {
+      "name": "Mebahel's Zombie Horde",
+      "filename": "mebahel-zombie-horde-1.2.1-1.20.1.jar",
+      "curseforge_project_id": 1090603,
+      "curseforge_file_id": 7829057,
+      "sha256": ""
+    },
+    {
+      "name": "Mutants and Zombies",
+      "filename": "MutantsZombies-1.3.2-Forge-mc1.20.1.jar",
+      "curseforge_project_id": 1204883,
+      "curseforge_file_id": 7230763,
+      "sha256": ""
+    },
+    {
+      "name": "Infectious Zombie Apocalypse",
+      "filename": "Infectious-forge-1.20.1-1.7.jar",
+      "curseforge_project_id": 1168025,
+      "curseforge_file_id": 7121624,
+      "sha256": ""
+    },
+    {
+      "name": "The Undead",
+      "filename": "THEUNDEADREVAMPED_1.9P_1.20.1.jar",
+      "curseforge_project_id": 479710,
+      "curseforge_file_id": 7867800,
+      "sha256": ""
+    },
+    {
+      "name": "Survivor's Arsenal",
+      "filename": "survivorsarsenal-1.1.7_test_version.jar",
+      "curseforge_project_id": 1457709,
+      "curseforge_file_id": 7947134,
+      "sha256": ""
+    },
+    {
+      "name": "Survival Instinct",
+      "filename": "survival_instinct-1.0.2-forge-1.20.1.jar",
+      "curseforge_project_id": 1242915,
+      "curseforge_file_id": 7357198,
+      "sha256": ""
+    },
+    {
+      "name": "Zombie Survival Kit",
+      "filename": "Zombie Survival Kit-1.20.1-forge-2.1.8.jar",
+      "curseforge_project_id": 839371,
+      "curseforge_file_id": 7241685,
+      "sha256": ""
+    },
+    {
+      "name": "Timeless and Classics Zero",
+      "filename": "tacz-1.20.1-1.1.7-hotfix2.jar",
+      "curseforge_project_id": 1028108,
+      "curseforge_file_id": 7745481,
+      "sha256": ""
+    },
+    {
+      "name": "Vic's Point Blank",
+      "filename": "pointblank-forge-1.20.1-1.11.1.jar",
+      "curseforge_project_id": 961053,
+      "curseforge_file_id": 7664533,
+      "sha256": ""
+    },
+    {
+      "name": "Keerdm's Binoculars",
+      "filename": "binocularsmod-1.02.jar",
+      "curseforge_project_id": 1214525,
+      "curseforge_file_id": 6334718,
+      "sha256": ""
+    },
+    {
+      "name": "Frontline Combat Pack",
+      "filename": "fcp-1.0.1.jar",
+      "curseforge_project_id": 1465874,
+      "curseforge_file_id": 7728743,
+      "sha256": ""
+    },
+    {
+      "name": "SBW Vintage Vehicle Pack",
+      "filename": "vvp-beta-1.20.1-0.2.0.jar",
+      "curseforge_project_id": 1280871,
+      "curseforge_file_id": 7730939,
+      "sha256": ""
+    },
+    {
+      "name": "SecurityCraft",
+      "filename": "[1.20.1] SecurityCraft v1.10.1.jar",
+      "curseforge_project_id": 64760,
+      "curseforge_file_id": 7148563,
+      "sha256": ""
+    },
+    {
+      "name": "EnhancedVisuals",
+      "filename": "EnhancedVisuals_FORGE_v1.8.28_mc1.20.1.jar",
+      "curseforge_project_id": 255389,
+      "curseforge_file_id": 8042920,
+      "sha256": ""
     }
   ]
 }
