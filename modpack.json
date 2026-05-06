@@ -337,6 +337,13 @@
       "curseforge_project_id": 499980,
       "curseforge_file_id": 8044110,
       "sha256": ""
+    },
+    {
+      "name": "Puzzles Lib",
+      "filename": "PuzzlesLib-v8.1.33-1.20.1-Forge.jar",
+      "curseforge_project_id": 495476,
+      "curseforge_file_id": 6918565,
+      "sha256": ""
     }
   ]
 }
