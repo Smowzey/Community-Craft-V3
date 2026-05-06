@@ -12,13 +12,6 @@
       "sha256": ""
     },
     {
-      "name": "Butchery",
-      "filename": "butchery-4.9-forge-1.20.1.jar",
-      "curseforge_project_id": 973620,
-      "curseforge_file_id": 7974743,
-      "sha256": ""
-    },
-    {
       "name": "Chovy's Apocalypse",
       "filename": "chovys_apocalypse_mod-1.9.jar",
       "curseforge_project_id": 1201158,
@@ -162,13 +155,6 @@
       "filename": "THEUNDEADREVAMPED_1.9P_1.20.1.jar",
       "curseforge_project_id": 479710,
       "curseforge_file_id": 7867800,
-      "sha256": ""
-    },
-    {
-      "name": "Survivor's Arsenal",
-      "filename": "survivorsarsenal-1.1.7_test_version.jar",
-      "curseforge_project_id": 1457709,
-      "curseforge_file_id": 7947134,
       "sha256": ""
     },
     {
