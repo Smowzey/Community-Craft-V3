@@ -292,9 +292,9 @@
     },
     {
       "name": "Superb Warfare",
-      "filename": "superbwarfare-0.8.9-snapshot-mc1.20.1-5f1229083-all.jar",
+      "filename": "NOM_EXACT_DU_FICHIER_0.8.8.jar",
       "curseforge_project_id": 1218165,
-      "curseforge_file_id": 8033678,
+      "curseforge_file_id": 7270851,
       "sha256": ""
     },
     {
@@ -344,6 +344,13 @@
       "filename": "horror_element_mod-1.6.3-forge-1.20.1.jar",
       "curseforge_project_id": 496520,
       "curseforge_file_id": 7484210,
+      "sha256": ""
+    },
+    {
+      "name": "Moonlight Lib",
+      "filename": "moonlight-1.20-2.16.31-forge.jar",
+      "curseforge_project_id": 499980,
+      "curseforge_file_id": 8044110,
       "sha256": ""
     }
   ]
