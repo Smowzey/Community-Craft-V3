@@ -457,13 +457,510 @@
       "curseforge_file_id": 7263076,
       "sha256": ""
     },
+{
+  "name": "Community Craft V3",
+  "mc_version": "1.20.1",
+  "forge_version": "47.3.0",
+  "pack_version": "1.0",
+  "mods": [
+    {
+      "name": "Waystones",
+      "filename": "waystones-forge-1.20.1-14.1.20.jar",
+      "curseforge_project_id": 245755,
+      "curseforge_file_id": 7682270,
+      "sha256": ""
+    },
+    {
+      "name": "Chovy's Apocalypse",
+      "filename": "chovys_apocalypse_mod-1.9.jar",
+      "curseforge_project_id": 1201158,
+      "curseforge_file_id": 6771864,
+      "sha256": ""
+    },
+    {
+      "name": "Simple Voice Chat",
+      "filename": "voicechat-forge-1.20.1.jar",
+      "url": "https://cdn.modrinth.com/data/9eGKb6K1/versions/gX3p2yfw/voicechat-forge-1.20.1-2.6.17.jar",
+      "sha256": ""
+    },
+    {
+      "name": "LoginMod",
+      "filename": "loginsystem-1.6.jar",
+      "curseforge_project_id": 1217786,
+      "curseforge_file_id": 7912610,
+      "sha256": ""
+    },
+    {
+      "name": "Extra Gore",
+      "filename": "extragore-1.20.1-5.2.3.1.jar",
+      "curseforge_project_id": 937006,
+      "curseforge_file_id": 5398532,
+      "sha256": ""
+    },
+    {
+      "name": "Simply Traps",
+      "filename": "simply_traps-1.7-forge-1.20.1.jar",
+      "curseforge_project_id": 1172014,
+      "curseforge_file_id": 6980501,
+      "sha256": ""
+    },
+    {
+      "name": "Bunker Down",
+      "filename": "bunker-down 1-1-6 - 1-20-1.jar",
+      "curseforge_project_id": 628560,
+      "curseforge_file_id": 4806699,
+      "sha256": ""
+    },
+    {
+      "name": "The Lost Cities",
+      "filename": "lostcities-1.20-7.4.11.jar",
+      "curseforge_project_id": 269024,
+      "curseforge_file_id": 7432706,
+      "sha256": ""
+    },
+    {
+      "name": "Zombie Apocalypse Essentials",
+      "filename": "Keerdm Zombie Apocalypse Essentials (TACZ) 1.42.jar",
+      "curseforge_project_id": 1061079,
+      "curseforge_file_id": 7740113,
+      "sha256": ""
+    },
+    {
+      "name": "ChaosZPack LostCities",
+      "filename": "chaoszpack v.1.4.1 TacZ.jar",
+      "curseforge_project_id": 1222668,
+      "curseforge_file_id": 7801045,
+      "sha256": ""
+    },
+    {
+      "name": "Underground Bunkers",
+      "filename": "UndergroundBunkers-1.0.5-1.20.x-forge.jar",
+      "curseforge_project_id": 961418,
+      "curseforge_file_id": 5727027,
+      "sha256": ""
+    },
+    {
+      "name": "Bad Mobs",
+      "filename": "BadMobs-1.20.1-19.0.4.jar",
+      "curseforge_project_id": 233258,
+      "curseforge_file_id": 5086469,
+      "sha256": ""
+    },
+    {
+      "name": "Mob Sunscreen",
+      "filename": "mobsunscreen-forge-1.20.1-3.1.1.jar",
+      "curseforge_project_id": 298408,
+      "curseforge_file_id": 4647106,
+      "sha256": ""
+    },
+    {
+      "name": "No Baby Zombies",
+      "filename": "nobz-1.3.jar",
+      "curseforge_project_id": 959336,
+      "curseforge_file_id": 7266607,
+      "sha256": ""
+    },
+    {
+      "name": "No Rest for the Wicked",
+      "filename": "norest-1.0.3-BETA.jar",
+      "curseforge_project_id": 1218594,
+      "curseforge_file_id": 7400184,
+      "sha256": ""
+    },
+    {
+      "name": "Zombie Awareness",
+      "filename": "zombieawareness-1.20.1-1.13.1.jar",
+      "curseforge_project_id": 237754,
+      "curseforge_file_id": 5096285,
+      "sha256": ""
+    },
+    {
+      "name": "We Got Runners",
+      "filename": "wegotrunnners-0.7.1.1.20.1[SPANISH TRANSLATION UPDATE].jar",
+      "curseforge_project_id": 531381,
+      "curseforge_file_id": 5509865,
+      "sha256": ""
+    },
+    {
+      "name": "The Hordes",
+      "filename": "The-Hordes-1.20.1-1.6.3e-all.jar",
+      "curseforge_project_id": 485779,
+      "curseforge_file_id": 8027309,
+      "sha256": ""
+    },
+    {
+      "name": "Mebahel's Zombie Horde",
+      "filename": "mebahel-zombie-horde-1.2.1-1.20.1.jar",
+      "curseforge_project_id": 1090603,
+      "curseforge_file_id": 7829057,
+      "sha256": ""
+    },
+    {
+      "name": "Mutant Monsters",
+      "filename": "MutantMonsters-v8.0.8-1.20.1-Forge.jar",
+      "curseforge_project_id": 852665,
+      "curseforge_file_id": 7232503,
+      "sha256": ""
+    },
+    {
+      "name": "Infectious Zombie Apocalypse",
+      "filename": "Infectious-forge-1.20.1-1.7.jar",
+      "curseforge_project_id": 1168025,
+      "curseforge_file_id": 7121624,
+      "sha256": ""
+    },
+    {
+      "name": "The Undead",
+      "filename": "THEUNDEADREVAMPED_1.9P_1.20.1.jar",
+      "curseforge_project_id": 479710,
+      "curseforge_file_id": 7867800,
+      "sha256": ""
+    },
+    {
+      "name": "Survival Instinct",
+      "filename": "survival_instinct-1.0.2-forge-1.20.1.jar",
+      "curseforge_project_id": 1242915,
+      "curseforge_file_id": 7357198,
+      "sha256": ""
+    },
+    {
+      "name": "Zombie Survival Kit",
+      "filename": "Zombie Survival Kit-1.20.1-forge-2.1.8.jar",
+      "curseforge_project_id": 839371,
+      "curseforge_file_id": 7241685,
+      "sha256": ""
+    },
+    {
+      "name": "Timeless and Classics Zero",
+      "filename": "tacz-1.20.1-1.1.7-hotfix2.jar",
+      "curseforge_project_id": 1028108,
+      "curseforge_file_id": 7745481,
+      "sha256": ""
+    },
+    {
+      "name": "Vic's Point Blank",
+      "filename": "pointblank-forge-1.20.1-1.11.1.jar",
+      "curseforge_project_id": 961053,
+      "curseforge_file_id": 7664533,
+      "sha256": ""
+    },
+    {
+      "name": "Keerdm's Binoculars",
+      "filename": "binocularsmod-1.02.jar",
+      "curseforge_project_id": 1214525,
+      "curseforge_file_id": 6334718,
+      "sha256": ""
+    },
+    {
+      "name": "Frontline Combat Pack",
+      "filename": "fcp-1.0.1.jar",
+      "curseforge_project_id": 1465874,
+      "curseforge_file_id": 7728743,
+      "sha256": ""
+    },
+    {
+      "name": "SBW Vintage Vehicle Pack",
+      "filename": "vvp-beta-1.20.1-0.2.0.jar",
+      "curseforge_project_id": 1280871,
+      "curseforge_file_id": 7730939,
+      "sha256": ""
+    },
+    {
+      "name": "SecurityCraft",
+      "filename": "[1.20.1] SecurityCraft v1.10.1.jar",
+      "curseforge_project_id": 64760,
+      "curseforge_file_id": 7148563,
+      "sha256": ""
+    },
+    {
+      "name": "EnhancedVisuals",
+      "filename": "EnhancedVisuals_FORGE_v1.8.28_mc1.20.1.jar",
+      "curseforge_project_id": 255389,
+      "curseforge_file_id": 8042920,
+      "sha256": ""
+    },
+    {
+      "name": "GeckoLib",
+      "filename": "geckolib-forge-1.20.1-4.8.3.jar",
+      "curseforge_project_id": 388172,
+      "curseforge_file_id": 7553267,
+      "sha256": ""
+    },
+    {
+      "name": "Create",
+      "filename": "create-1.20.1-6.0.8.jar",
+      "curseforge_project_id": 328085,
+      "curseforge_file_id": 7178761,
+      "sha256": ""
+    },
+    {
+      "name": "Create Deco",
+      "filename": "createdeco-2.0.3-1.20.1-forge.jar",
+      "curseforge_project_id": 509285,
+      "curseforge_file_id": 6373226,
+      "sha256": ""
+    },
+    {
+      "name": "Curios API",
+      "filename": "curios-forge-5.14.1+1.20.1.jar",
+      "curseforge_project_id": 309927,
+      "curseforge_file_id": 6418456,
+      "sha256": ""
+    },
+    {
+      "name": "Balm",
+      "filename": "balm-forge-1.20.1-7.3.38-all.jar",
+      "curseforge_project_id": 531761,
+      "curseforge_file_id": 7420617,
+      "sha256": ""
+    },
+    {
+      "name": "CreativeCore",
+      "filename": "CreativeCore_FORGE_v2.12.37_mc1.20.1.jar",
+      "curseforge_project_id": 257814,
+      "curseforge_file_id": 8004858,
+      "sha256": ""
+    },
+    {
+      "name": "CoroUtil",
+      "filename": "coroutil-forge-1.20.1-1.3.7.jar",
+      "curseforge_project_id": 237749,
+      "curseforge_file_id": 5096038,
+      "sha256": ""
+    },
+    {
+      "name": "Framework",
+      "filename": "framework-forge-1.20.1-0.8.0.jar",
+      "curseforge_project_id": 549225,
+      "curseforge_file_id": 7573740,
+      "sha256": ""
+    },
+    {
+      "name": "Superb Warfare",
+      "filename": "superbwarfare-1.20.1-0.8.8-final-6a6b54795.jar",
+      "url": "https://edge.forgecdn.net/files/7292/685/superbwarfare-1.20.1-0.8.8-final-6a6b54795.jar",
+      "sha256": ""
+    },
+    {
+      "name": "Immersive Weathering",
+      "filename": "immersive_weathering-1.20.1-2.0.5-forge.jar",
+      "curseforge_project_id": 592449,
+      "curseforge_file_id": 6116941,
+      "sha256": ""
+    },
+    {
+      "name": "Refurbished Furniture",
+      "filename": "refurbished_furniture-forge-1.20.1-1.0.20.jar",
+      "curseforge_project_id": 897116,
+      "curseforge_file_id": 7110922,
+      "sha256": ""
+    },
+    {
+      "name": "Sona",
+      "filename": "Sona-1.20.1-forge-1.4.3.jar",
+      "curseforge_project_id": 1023345,
+      "curseforge_file_id": 7776113,
+      "sha256": ""
+    },
+    {
+      "name": "Minetraps",
+      "filename": "MineTraps-1.20.2-(v.2.3.0a).jar",
+      "curseforge_project_id": 311546,
+      "curseforge_file_id": 5446284,
+      "sha256": ""
+    },
+    {
+      "name": "Doomsday Decoration",
+      "filename": "doomsday_decoration-1.1.3-forge-1.20.1.jar",
+      "curseforge_project_id": 1180487,
+      "curseforge_file_id": 6781856,
+      "sha256": ""
+    },
+    {
+      "name": "Atlas Lib",
+      "filename": "Atlas Lib-1.20.1-1.1.12.jar",
+      "curseforge_project_id": 463826,
+      "curseforge_file_id": 5254550,
+      "sha256": ""
+    },
+    {
+      "name": "Horror elements mod",
+      "filename": "horror_element_mod-1.6.3-forge-1.20.1.jar",
+      "curseforge_project_id": 496520,
+      "curseforge_file_id": 7484210,
+      "sha256": ""
+    },
+    {
+      "name": "Moonlight Lib",
+      "filename": "moonlight-1.20-2.16.31-forge.jar",
+      "curseforge_project_id": 499980,
+      "curseforge_file_id": 8044110,
+      "sha256": ""
+    },
+    {
+      "name": "Puzzles Lib",
+      "filename": "PuzzlesLib-v8.1.33-1.20.1-Forge.jar",
+      "curseforge_project_id": 495476,
+      "curseforge_file_id": 6918565,
+      "sha256": ""
+    },
+    {
+      "name": "First Aid",
+      "filename": "firstaid-1.20.1-1.1.jar",
+      "curseforge_project_id": 276837,
+      "curseforge_file_id": 5531834,
+      "sha256": ""
+    },
+    {
+      "name": "Skin Restorer",
+      "filename": "skinrestorer-2.7.0+1.20-forge.jar",
+      "curseforge_project_id": 443823,
+      "curseforge_file_id": 7785913,
+      "sha256": ""
+    },
+    {
+      "name": "Ambient Environment",
+      "filename": "AmbientEnvironment-forge-1.20.1-11.0.0.1.jar",
+      "curseforge_project_id": 320163,
+      "curseforge_file_id": 4598390,
+      "sha256": ""
+    },
+    {
+      "name": "Sophisticated Backpacks",
+      "filename": "sophisticatedbackpacks-1.20.1-3.24.38.1738.jar",
+      "curseforge_project_id": 422301,
+      "curseforge_file_id": 8034902,
+      "sha256": ""
+    },
+    {
+      "name": "Walkie-Talkie",
+      "filename": "walkietalkie-forge-1.20.1-1.3.0.jar",
+      "curseforge_project_id": 825621,
+      "curseforge_file_id": 5133440,
+      "sha256": ""
+    },
+    {
+      "name": "Just Enough Items",
+      "filename": "jei-1.20.1-forge-15.20.0.129.jar",
+      "curseforge_project_id": 238222,
+      "curseforge_file_id": 7391695,
+      "sha256": ""
+    },
+    {
+      "name": "Extra Zombie Drops",
+      "filename": "extra_zombie_drops-1.0.0.jar",
+      "curseforge_project_id": 822109,
+      "curseforge_file_id": 6765912,
+      "sha256": ""
+    },
+    {
+      "name": "AppleSkin",
+      "filename": "appleskin-forge-mc1.20.1-2.5.1.jar",
+      "curseforge_project_id": 248787,
+      "curseforge_file_id": 4770828,
+      "sha256": ""
+    },
+    {
+      "name": "Zombie Infection Vaccine",
+      "filename": "cure-2.0.2-forge-1.20.1.jar",
+      "curseforge_project_id": 887582,
+      "curseforge_file_id": 5547475,
+      "sha256": ""
+    },
+    {
+      "name": "BadOptimizations",
+      "filename": "BadOptimizations-2.4.1-1.20.1.jar",
+      "curseforge_project_id": 949555,
+      "curseforge_file_id": 7338200,
+      "sha256": ""
+    },
+        {
+      "name": "Medical Remedies",
+      "filename": "marbledsfirstaid-1.20.1forge-1.2.1.0.jar",
+      "curseforge_project_id": 1185929,
+      "curseforge_file_id": 8023446,
+      "sha256": ""
+    },
+    {
+      "name": "Architectury API",
+      "filename": "architectury-9.2.14-forge.jar",
+      "curseforge_project_id": 419699,
+      "curseforge_file_id": 5137938,
+      "sha256": ""
+    },
+    {
+      "name": "Sophisticated Core",
+      "filename": "sophisticatedcore-1.20.1-1.3.34.1844.jar",
+      "curseforge_project_id": 618298,
+      "curseforge_file_id": 8046954,
+      "sha256": ""
+    },
+    {
+      "name": "Embeddium",
+      "filename": "embeddium-0.3.1+mc1.20.1.jar",
+      "curseforge_project_id": 908741,
+      "curseforge_file_id": 5681725,
+      "sha256": ""
+    },
+    {
+      "name": "Oculus",
+      "filename": "oculus-mc1.20.1-1.8.0.jar",
+      "curseforge_project_id": 581495,
+      "curseforge_file_id": 6020952,
+      "sha256": ""
+    },
+    {
+      "name": "Lootr",
+      "filename": "lootr-forge-1.20-0.7.35.94.jar",
+      "curseforge_project_id": 361276,
+      "curseforge_file_id": 7263076,
+      "sha256": ""
+    },
     {
       "name": "Panda's Falling Trees",
       "filename": "fallingtrees-forge-mc1.20-0.13.2-SNAPSHOT.jar",
       "curseforge_project_id": 880630,
       "curseforge_file_id": 6231030,
       "sha256": ""
+    },
+    {
+      "name": "PandaLib",
+      "filename": "pandalib-forge-mc1.20-0.5.2-SNAPSHOT.jar",
+      "curseforge_project_id": 975460,
+      "curseforge_file_id": 6245108,
+      "sha256": ""
+    },
+    {
+      "name": "Access Denied",
+      "filename": "access_denied-6.2.1.jar",
+      "curseforge_project_id": 917449,
+      "curseforge_file_id": 7193940,
+      "sha256": ""
     }
+  ],
+  "resourcepacks": [
+    {
+      "name": "Tissou's Zombie Pack",
+      "filename": "TZP_1.20.1_2.7.zip",
+      "curseforge_project_id": 312822,
+      "curseforge_file_id": 4750306
+    },
+    {
+      "name": "Fresh Animations",
+      "filename": "FreshAnimations_v1.10.4.zip",
+      "curseforge_project_id": 453763,
+      "curseforge_file_id": 7670377
+    }
+  ],
+  "shaderpacks": [
+    {
+      "name": "Hysteria Shaders",
+      "filename": "Hysteria-Shaders-Universal-v1.2.1.zip",
+      "url": "https://cdn.modrinth.com/data/iHC8BZn4/versions/u7oNAXa5/Hysteria-Shaders-Universal-v1.2.1.zip"
+    }
+  ]
+}
+
   ],
   "resourcepacks": [
     {
