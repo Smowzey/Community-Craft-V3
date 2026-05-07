@@ -467,10 +467,9 @@
   ],
   "shaderpacks": [
     {
-      "name": "Insanity Shader",
-      "filename": "Insanity-Shader-Universal-v1.500.zip",
-      "curseforge_project_id": 618217,
-      "curseforge_file_id": 4794932
+      "name": "Hysteria Shaders",
+      "filename": "Hysteria-Shaders-Universal-v1.2.1.zip",
+      "url": "https://cdn.modrinth.com/data/iHC8BZn4/versions/u7oNAXa5/Hysteria-Shaders-Universal-v1.2.1.zip"
     }
   ]
 }
