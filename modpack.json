@@ -435,6 +435,20 @@
       "curseforge_project_id": 618298,
       "curseforge_file_id": 8046954,
       "sha256": ""
+    },
+    {
+      "name": "Embeddium",
+      "filename": "embeddium-0.3.1+mc1.20.1.jar",
+      "curseforge_project_id": 908741,
+      "curseforge_file_id": 5681725,
+      "sha256": ""
+    },
+    {
+      "name": "Oculus",
+      "filename": "oculus-mc1.20.1-1.8.0.jar",
+      "curseforge_project_id": 581495,
+      "curseforge_file_id": 6020952,
+      "sha256": ""
     }
   ],
   "resourcepacks": [
@@ -449,6 +463,14 @@
       "filename": "FreshAnimations_v1.10.4.zip",
       "curseforge_project_id": 453763,
       "curseforge_file_id": 7670377
+    }
+  ],
+  "shaderpacks": [
+    {
+      "name": "Insanity Shader",
+      "filename": "Insanity-Shader-Universal-v1.500.zip",
+      "curseforge_project_id": 618217,
+      "curseforge_file_id": 4794932
     }
   ]
 }
