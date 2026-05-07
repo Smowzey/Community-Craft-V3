@@ -449,6 +449,20 @@
       "curseforge_project_id": 581495,
       "curseforge_file_id": 6020952,
       "sha256": ""
+    },
+    {
+      "name": "Lootr",
+      "filename": "lootr-forge-1.20-0.7.35.94.jar",
+      "curseforge_project_id": 361276,
+      "curseforge_file_id": 7263076,
+      "sha256": ""
+    },
+    {
+      "name": "Panda's Falling Trees",
+      "filename": "fallingtrees-forge-mc1.20-0.13.2-SNAPSHOT.jar",
+      "curseforge_project_id": 880630,
+      "curseforge_file_id": 6231030,
+      "sha256": ""
     }
   ],
   "resourcepacks": [
