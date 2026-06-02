@@ -1,0 +1,30 @@
+# --- Artefacts de build PyInstaller ---
+build/
+dist/
+*.manifest
+
+# --- Caches Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# --- Artefacts de jeu Minecraft (générés au lancement, pas du code) ---
+logs/
+config/
+*.log
+*.log.gz
+launcher_log.txt
+session.json
+
+# --- Secrets locaux ---
+.env
+secrets.py
+api_key.txt
+
+# --- Éditeurs / OS ---
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
