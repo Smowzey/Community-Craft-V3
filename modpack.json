@@ -12,6 +12,27 @@
       "sha256": ""
     },
     {
+      "name": "Xaero's Minimap",
+      "filename": "xaerominimap-forge-1.20.1-25.3.13.jar",
+      "curseforge_project_id": 263420,
+      "curseforge_file_id": 8046960,
+      "sha256": ""
+    },
+    {
+      "name": "Xaero's World Map",
+      "filename": "xaeroworldmap-forge-1.20.1-1.40.16.jar",
+      "curseforge_project_id": 317780,
+      "curseforge_file_id": 8042194,
+      "sha256": ""
+    },
+    {
+      "name": "Xaero's Minimap & World Map - Waystones Compatibility",
+      "filename": "xaeros_waystones_compatibility-1.1 - 1.20.1.jar",
+      "curseforge_project_id": 887484,
+      "curseforge_file_id": 7786445,
+      "sha256": ""
+    },
+    {
       "name": "Chovy's Apocalypse",
       "filename": "chovys_apocalypse_mod-1.9.jar",
       "curseforge_project_id": 1201158,
