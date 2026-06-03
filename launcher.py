@@ -25,7 +25,7 @@ FORGE_VERSION = "47.3.0"
 PACK_VERSION = "v3.1"
 
 # Version du launcher (utilisée pour l'auto-update)
-LAUNCHER_VERSION = "3.1.0"
+LAUNCHER_VERSION = "3.1.1"
 
 # Sources distantes (même dépôt GitHub que le modpack)
 GITHUB_RAW_BASE = "https://raw.githubusercontent.com/Smowzey/community-craft-v3/main"

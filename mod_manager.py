@@ -11,6 +11,7 @@ MODPACK_URL = "https://raw.githubusercontent.com/Smowzey/community-craft-v3/main
 MODS_DIR = os.path.join(os.getenv("APPDATA"), ".community-craft-v3", "mods")
 RESOURCEPACKS_DIR = os.path.join(os.getenv("APPDATA"), ".community-craft-v3", "resourcepacks")
 SHADERPACKS_DIR = os.path.join(os.getenv("APPDATA"), ".community-craft-v3", "shaderpacks")
+CONFIG_DIR = os.path.join(os.getenv("APPDATA"), ".community-craft-v3", "config")
 CURSEFORGE_API_KEY = "$2a$10$ogJO1kKcvpUth60qurFiaeaJ8vjDyk3Z0v2W54oXt/cbyi2gbpSvy"  # → console.curseforge.com
 
 
@@ -103,6 +104,63 @@ def download_file_item(item: dict, target_dir: str, default_ext: str, on_progres
         on_progress(item.get("name", filename), "done")
 
 
+def ensure_default_shader(default_filename: str):
+    """Active le shader par defaut du pack dans oculus.properties.
+
+    Regle (respecte le choix du joueur) :
+    - Si le shader actuellement selectionne existe toujours -> on ne touche a rien.
+    - Si oculus.properties n'existe pas (1er lancement / nouvel ami) -> on cree le fichier
+      avec le shader par defaut ET enableShaders=true.
+    - Si le shader selectionne a ete supprime (ex: ancien Hysteria) -> on remplace par le
+      shader par defaut, en conservant le reglage enableShaders existant (on/off).
+    """
+    if not default_filename:
+        return
+    try:
+        oculus_path = os.path.join(CONFIG_DIR, "oculus.properties")
+        lines = []
+        if os.path.exists(oculus_path):
+            with open(oculus_path, "r", encoding="utf-8", errors="ignore") as f:
+                lines = f.read().splitlines()
+
+        current = None
+        for line in lines:
+            if line.startswith("shaderPack="):
+                current = line.split("=", 1)[1].strip()
+                break
+
+        # Le shader actuel est-il toujours present sur le disque ?
+        if current and os.path.exists(os.path.join(SHADERPACKS_DIR, current)):
+            return  # choix du joueur valide -> on n'y touche pas
+
+        had_file = os.path.exists(oculus_path)
+        updates = {"shaderPack": default_filename}
+        if not had_file:
+            updates["enableShaders"] = "true"  # nouvelle install : on active le shader de base
+
+        os.makedirs(CONFIG_DIR, exist_ok=True)
+        seen = set()
+        out = []
+        for line in lines:
+            if "=" in line and not line.startswith("#"):
+                key = line.split("=", 1)[0].strip()
+                if key in updates:
+                    out.append(f"{key}={updates[key]}")
+                    seen.add(key)
+                    continue
+            out.append(line)
+        for key, value in updates.items():
+            if key not in seen:
+                out.append(f"{key}={value}")
+        if not out or not out[0].startswith("#"):
+            out.insert(0, "#Managed by Community Craft Launcher")
+
+        with open(oculus_path, "w", encoding="utf-8") as f:
+            f.write("\n".join(out) + "\n")
+    except Exception as e:
+        print(f"ensure_default_shader: {e}")
+
+
 def sync_mods(on_progress=None, on_complete=None, on_overall=None):
     """Synchronise mods, resource packs et shaders.
 
@@ -173,6 +231,11 @@ def sync_mods(on_progress=None, on_complete=None, on_overall=None):
                                 os.remove(filepath)
                             except:
                                 pass
+
+            # Active le shader de base du pack (1er de la liste) si necessaire
+            shaderpacks = modpack.get("shaderpacks", [])
+            if shaderpacks:
+                ensure_default_shader(shaderpacks[0].get("filename"))
 
             if on_complete:
                 on_complete(None)
