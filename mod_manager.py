@@ -60,24 +60,27 @@ def download_file_item(item: dict, target_dir: str, default_ext: str, on_progres
     filename = item.get("filename", item.get("name", "fichier_inconnu") + default_ext)
     filepath = os.path.join(target_dir, filename)
 
-    # Déjà installé et à jour ?
+    expected_sha = item.get("sha256", "")
+
+    # Déjà installé, intègre et à jour ?
     if os.path.exists(filepath):
-        # Vérifie que le fichier n'est pas corrompu (un vrai fichier JAR/ZIP)
-        if zipfile.is_zipfile(filepath):
-            expected_sha = item.get("sha256", "")
-            if not expected_sha or sha256_of_file(filepath) == expected_sha:
-                if on_progress:
-                    on_progress(item.get("name", filename), "ok")
-                return
-        else:
-            os.remove(filepath)  # Fichier corrompu, on le supprime pour le retélécharger
+        # Fichier valide (vrai JAR/ZIP) ET (pas de sha attendu OU sha identique) -> on garde
+        if zipfile.is_zipfile(filepath) and (not expected_sha or sha256_of_file(filepath) == expected_sha):
+            if on_progress:
+                on_progress(item.get("name", filename), "ok")
+            return
+        # Corrompu ou empreinte différente -> on supprime pour retélécharger proprement
+        try:
+            os.remove(filepath)
+        except:
+            pass
 
     if on_progress:
         on_progress(item.get("name", filename), "downloading")
 
     # On vérifie si une URL directe est fournie, sinon on utilise l'API CurseForge
     download_url = item.get("url")
-    
+
     if not download_url:
         if "curseforge_project_id" in item and "curseforge_file_id" in item:
             download_url = get_curseforge_download_url(
@@ -88,20 +91,59 @@ def download_file_item(item: dict, target_dir: str, default_ext: str, on_progres
         else:
             raise Exception(f"Le fichier '{item.get('name', filename)}' n'a pas d'ID CurseForge ni d'URL dans modpack.json.")
 
-    try:
-        # On ajoute une fausse "carte d'identité" (User-Agent) pour que Modrinth ne nous bloque pas
-        headers = {"User-Agent": "CommunityCraft-Launcher/3.0"}
-        response = requests.get(download_url, stream=True, timeout=60, headers=headers)
-        response.raise_for_status()
-    except requests.exceptions.HTTPError as e:
-        raise Exception(f"Erreur HTTP: Le téléchargement de {filename} a échoué ({e}).")
+    # On ajoute une fausse "carte d'identité" (User-Agent) pour que Modrinth ne nous bloque pas
+    headers = {"User-Agent": "CommunityCraft-Launcher/3.0"}
 
-    with open(filepath, "wb") as f:
-        for chunk in response.iter_content(chunk_size=8192):
-            f.write(chunk)
+    # Téléchargement avec jusqu'à 3 essais (réseau instable) + vérification d'intégrité
+    last_error = None
+    for attempt in range(1, 4):
+        try:
+            with requests.get(download_url, stream=True, timeout=60, headers=headers) as response:
+                response.raise_for_status()
+                with open(filepath, "wb") as f:
+                    for chunk in response.iter_content(chunk_size=8192):
+                        if chunk:
+                            f.write(chunk)
 
-    if on_progress:
-        on_progress(item.get("name", filename), "done")
+            # Le fichier téléchargé est-il un zip/jar valide ?
+            if not zipfile.is_zipfile(filepath):
+                raise Exception("fichier corrompu (ce n'est pas un zip/jar valide)")
+            # L'empreinte correspond-elle (si fournie) ?
+            if expected_sha and sha256_of_file(filepath) != expected_sha:
+                raise Exception("empreinte sha256 incorrecte")
+
+            if on_progress:
+                on_progress(item.get("name", filename), "done")
+            return
+        except Exception as e:
+            last_error = e
+            try:
+                if os.path.exists(filepath):
+                    os.remove(filepath)
+            except:
+                pass
+            if attempt < 3:
+                time.sleep(1.5 * attempt)  # petite pause croissante avant de réessayer
+
+    raise Exception(f"Échec du téléchargement de {filename} après 3 essais : {last_error}")
+
+
+def validate_mods() -> list:
+    """Renvoie la liste des .jar du dossier mods qui sont corrompus ou vides.
+    Utilisé pour un contrôle rapide avant de lancer le jeu (#6)."""
+    corrupt = []
+    if not os.path.exists(MODS_DIR):
+        return corrupt
+    for file in os.listdir(MODS_DIR):
+        if not file.lower().endswith(".jar"):
+            continue
+        path = os.path.join(MODS_DIR, file)
+        try:
+            if os.path.getsize(path) == 0 or not zipfile.is_zipfile(path):
+                corrupt.append(file)
+        except OSError:
+            corrupt.append(file)
+    return corrupt
 
 
 def ensure_default_shader(default_filename: str):

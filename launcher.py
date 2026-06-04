@@ -14,7 +14,7 @@ from tkinter import messagebox
 from PIL import Image
 import minecraft_launcher_lib
 from auth import load_session, login_offline
-from mod_manager import sync_mods, fetch_modpack
+from mod_manager import sync_mods, fetch_modpack, validate_mods
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
@@ -718,13 +718,62 @@ class LauncherApp(ctk.CTk):
         return parse(remote) > parse(local)
 
     def _prompt_update(self, version, url):
-        if messagebox.askyesno(
+        if not messagebox.askyesno(
             "Mise à jour disponible",
             f"Une nouvelle version du launcher est disponible (v{version}).\n"
             f"Tu utilises la v{LAUNCHER_VERSION}.\n\nVeux-tu la télécharger maintenant ?"
         ):
-            if url:
-                webbrowser.open(url)
+            return
+        if not url:
+            return
+        # Si l'URL pointe vers l'exe ET qu'on tourne en .exe -> mise à jour automatique.
+        if url.lower().endswith(".exe") and getattr(sys, "frozen", False):
+            self._perform_self_update(url)
+        else:
+            webbrowser.open(url)
+
+    def _perform_self_update(self, url):
+        """Télécharge le nouvel exe et le remplace automatiquement, puis relance."""
+        if self.home_page:
+            self.home_page.set_status("Téléchargement de la mise à jour...", "#00BFFF")
+
+        def run():
+            try:
+                exe_path = sys.executable
+                exe_dir = os.path.dirname(exe_path)
+                new_path = os.path.join(exe_dir, "update_tmp.exe")
+
+                with requests.get(url, stream=True, timeout=180,
+                                  headers={"User-Agent": "CommunityCraft-Launcher/3.0"}) as r:
+                    r.raise_for_status()
+                    with open(new_path, "wb") as f:
+                        for chunk in r.iter_content(chunk_size=8192):
+                            if chunk:
+                                f.write(chunk)
+
+                # Script qui attend la fermeture du launcher, remplace l'exe et le relance
+                bat_path = os.path.join(exe_dir, "_update.bat")
+                with open(bat_path, "w", encoding="utf-8") as f:
+                    f.write(
+                        "@echo off\r\n"
+                        "timeout /t 2 /nobreak >nul\r\n"
+                        f'del "{exe_path}"\r\n'
+                        f'move "{new_path}" "{exe_path}"\r\n'
+                        f'start "" "{exe_path}"\r\n'
+                        'del "%~f0"\r\n'
+                    )
+                kwargs = {}
+                if sys.platform == "win32":
+                    kwargs["creationflags"] = getattr(subprocess, "CREATE_NO_WINDOW", 0x08000000)
+                subprocess.Popen(["cmd", "/c", bat_path], **kwargs)
+                self.after(0, self.destroy)
+            except Exception as e:
+                self.after(0, lambda: messagebox.showerror(
+                    "Mise à jour",
+                    f"Échec de la mise à jour automatique : {e}\nOuverture de la page de téléchargement."))
+                self.after(0, lambda: webbrowser.open(url))
+
+        threading.Thread(target=run, daemon=True).start()
 
     def _start_rich_presence(self):
         """Active le Discord Rich Presence si configuré (optionnel)."""
@@ -789,6 +838,22 @@ class LauncherApp(ctk.CTk):
 
         def launch():
             try:
+                # Contrôle d'intégrité des mods avant de lancer (#6)
+                corrupt = validate_mods()
+                if corrupt:
+                    apercu = ", ".join(corrupt[:5]) + ("..." if len(corrupt) > 5 else "")
+                    if self.home_page:
+                        self.after(0, self.home_page.hide_progress)
+                        self.after(0, lambda: self.home_page.set_status(
+                            f"⚠️ {len(corrupt)} mod(s) corrompu(s). Utilise « Réparer ».", "#FF5555"))
+                        self.after(0, lambda: self.home_page.play_btn.configure(state="normal", text="Jouer"))
+                    self.after(0, lambda: messagebox.showwarning(
+                        "Mods corrompus",
+                        f"{len(corrupt)} fichier(s) de mod sont corrompus :\n\n{apercu}\n\n"
+                        "Va dans Paramètres → Maintenance → « Réparer / Réinstaller », "
+                        "ou relance pour les retélécharger."))
+                    return
+
                 # Le dossier où le jeu sera installé (isolé du vrai .minecraft pour éviter les conflits)
                 minecraft_dir = self.minecraft_dir
                 forge_version = f"{MC_VERSION}-{FORGE_VERSION}"

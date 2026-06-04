@@ -9,508 +9,508 @@
       "filename": "waystones-forge-1.20.1-14.1.20.jar",
       "curseforge_project_id": 245755,
       "curseforge_file_id": 7682270,
-      "sha256": ""
+      "sha256": "5ecc6535596b5954f6293224be6b35805c64f4d4aedc2b9e32d9508dd529cabd"
     },
     {
       "name": "Xaero's Minimap",
       "filename": "xaerominimap-forge-1.20.1-25.3.13.jar",
       "curseforge_project_id": 263420,
       "curseforge_file_id": 8046960,
-      "sha256": ""
+      "sha256": "107a686c1a1637998c8ce7fa2262bb8c36f24277d6b2cf4b512a0b176ff41e89"
     },
     {
       "name": "Xaero's World Map",
       "filename": "xaeroworldmap-forge-1.20.1-1.40.16.jar",
       "curseforge_project_id": 317780,
       "curseforge_file_id": 8042194,
-      "sha256": ""
+      "sha256": "49fbf2a0c91ca7e161b17f3b1784d4e798d0cd19f361ad3ebf6613e559f6371d"
     },
     {
       "name": "Xaero's Minimap & World Map - Waystones Compatibility",
       "filename": "xaeros_waystones_compatibility-1.1 - 1.20.1.jar",
       "curseforge_project_id": 887484,
       "curseforge_file_id": 7786445,
-      "sha256": ""
+      "sha256": "d330d9cb7592035cf580a75621b1113c0fc50dd1ad7e1b5b071155930394f3da"
     },
     {
       "name": "Chovy's Apocalypse",
       "filename": "chovys_apocalypse_mod-1.9.jar",
       "curseforge_project_id": 1201158,
       "curseforge_file_id": 6771864,
-      "sha256": ""
+      "sha256": "c7ed56e6ee521e4d8432943b2409b3c407adf5b57db11a444c5e0ea4427572a1"
     },
     {
       "name": "Simple Voice Chat",
       "filename": "voicechat-forge-1.20.1.jar",
       "url": "https://cdn.modrinth.com/data/9eGKb6K1/versions/gX3p2yfw/voicechat-forge-1.20.1-2.6.17.jar",
-      "sha256": ""
+      "sha256": "31a4aa5ed047eb7687aeb1839a44eb1b53c70729b0394235775c6bf284969df7"
     },
     {
       "name": "LoginMod",
       "filename": "loginsystem-1.6.jar",
       "curseforge_project_id": 1217786,
       "curseforge_file_id": 7912610,
-      "sha256": ""
+      "sha256": "d213eb77f5b74176df2d4df4141babdb5eebe27680b8366345e6e14de8b34f90"
     },
     {
       "name": "Extra Gore",
       "filename": "extragore-1.20.1-5.2.3.1.jar",
       "curseforge_project_id": 937006,
       "curseforge_file_id": 5398532,
-      "sha256": ""
+      "sha256": "c3d2547819d06deb51906e1abf7bf44e229f1d6e1dad274fa1c9ea1fe3950632"
     },
     {
       "name": "Simply Traps",
       "filename": "simply_traps-1.7-forge-1.20.1.jar",
       "curseforge_project_id": 1172014,
       "curseforge_file_id": 6980501,
-      "sha256": ""
+      "sha256": "932cb2547d2a918a9441c414913353912b77f7c2785f804efe8daabfc874d4a4"
     },
     {
       "name": "The Lost Cities",
       "filename": "lostcities-1.20-7.4.11.jar",
       "curseforge_project_id": 269024,
       "curseforge_file_id": 7432706,
-      "sha256": ""
+      "sha256": "7a3f3c55de1b869380fdbdef4fa8865bc1daf3ae6c66fab1056ea44d6534b4fb"
     },
     {
       "name": "Zombie Apocalypse Essentials",
       "filename": "Keerdm Zombie Apocalypse Essentials (TACZ) 1.42.jar",
       "curseforge_project_id": 1061079,
       "curseforge_file_id": 7740113,
-      "sha256": ""
+      "sha256": "1b9db7636db3a1bcfb015d19c6d44b663e454f05e12e472d128c60f2b5214d3e"
     },
     {
       "name": "ChaosZPack LostCities",
       "filename": "chaoszpack v.1.4.1 TacZ.jar",
       "curseforge_project_id": 1222668,
       "curseforge_file_id": 7801045,
-      "sha256": ""
+      "sha256": "62e8db0ab3748e3dec0cb65467b73e444b4d444ffea2fc9c6ba37442568b5c0b"
     },
     {
       "name": "Underground Bunkers",
       "filename": "UndergroundBunkers-1.0.5-1.20.x-forge.jar",
       "curseforge_project_id": 961418,
       "curseforge_file_id": 5727027,
-      "sha256": ""
+      "sha256": "b9f9a25648f6abf3747c4f1e9c0a0438baac474c71ad5b0981a8613481982d58"
     },
     {
       "name": "Bad Mobs",
       "filename": "BadMobs-1.20.1-19.0.4.jar",
       "curseforge_project_id": 233258,
       "curseforge_file_id": 5086469,
-      "sha256": ""
+      "sha256": "b36e64f510404c0984d7d5358e6e99937516d0eeab3ec534eaa638c8b29dfd85"
     },
     {
       "name": "Mob Sunscreen",
       "filename": "mobsunscreen-forge-1.20.1-3.1.1.jar",
       "curseforge_project_id": 298408,
       "curseforge_file_id": 4647106,
-      "sha256": ""
+      "sha256": "92595dacd3a5fccefb61819453165066f978537815a2ddd4b4d74c7d0c699c91"
     },
     {
       "name": "No Baby Zombies",
       "filename": "nobz-1.3.jar",
       "curseforge_project_id": 959336,
       "curseforge_file_id": 7266607,
-      "sha256": ""
+      "sha256": "d25dffd2517685560358adcfd43256426ef8426cbb4f1b56049d1db76ecccbfc"
     },
     {
       "name": "No Rest for the Wicked",
       "filename": "norest-1.0.3-BETA.jar",
       "curseforge_project_id": 1218594,
       "curseforge_file_id": 7400184,
-      "sha256": ""
+      "sha256": "23d5e6f70efcdb2f5f7149d116360f1db233f75b91b83783a6a767593f78d185"
     },
     {
       "name": "Zombie Awareness",
       "filename": "zombieawareness-1.20.1-1.13.1.jar",
       "curseforge_project_id": 237754,
       "curseforge_file_id": 5096285,
-      "sha256": ""
+      "sha256": "4f5104f7d29e1d065364d2483885f3751da2bef09a734cead2fce81c82c46586"
     },
     {
       "name": "We Got Runners",
       "filename": "wegotrunnners-0.7.1.1.20.1[SPANISH TRANSLATION UPDATE].jar",
       "curseforge_project_id": 531381,
       "curseforge_file_id": 5509865,
-      "sha256": ""
+      "sha256": "2199e88400583fd107cbfe09881d38a561c91b440d34b316029670b51ebbcd55"
     },
     {
       "name": "The Hordes",
       "filename": "The-Hordes-1.20.1-1.6.3e-all.jar",
       "curseforge_project_id": 485779,
       "curseforge_file_id": 8027309,
-      "sha256": ""
+      "sha256": "d811aaf8077a5321ea021a9d871d75edb1ab7e37d22d62218b0e7efa2546367e"
     },
     {
       "name": "Mebahel's Zombie Horde",
       "filename": "mebahel-zombie-horde-1.2.1-1.20.1.jar",
       "url": "https://edge.forgecdn.net/files/7829/057/mebahel-zombie-horde-1.2.1-1.20.1.jar",
-      "sha256": ""
+      "sha256": "afeae6fe040e0ced578c2e44c25a3c7d07945e4f8187e0d52dbd7ba83e19f621"
     },
     {
       "name": "Mutant Monsters",
       "filename": "MutantMonsters-v8.0.8-1.20.1-Forge.jar",
       "curseforge_project_id": 852665,
       "curseforge_file_id": 7232503,
-      "sha256": ""
+      "sha256": "9a1835dd388a04c37acb1384e7c39650804103b3dd9d4b3910fd49022d18a4bf"
     },
     {
       "name": "Infectious Zombie Apocalypse",
       "filename": "Infectious-forge-1.20.1-1.7.jar",
       "curseforge_project_id": 1168025,
       "curseforge_file_id": 7121624,
-      "sha256": ""
+      "sha256": "23f1ce198ea3c462b6a52ba6deabaf4be878f611f9265a66aeef390d63f38263"
     },
     {
       "name": "The Undead",
       "filename": "THEUNDEADREVAMPED_1.9P_1.20.1.jar",
       "curseforge_project_id": 479710,
       "curseforge_file_id": 7867800,
-      "sha256": ""
+      "sha256": "65a00977df685b71dcf6bff7f32fb85c5d5f60e71eafc6994adbb4feed193ff5"
     },
     {
       "name": "Survival Instinct",
       "filename": "survival_instinct-1.0.2-forge-1.20.1.jar",
       "curseforge_project_id": 1242915,
       "curseforge_file_id": 7357198,
-      "sha256": ""
+      "sha256": "9f73d8ec5fcf6bb6641f46c0484c63dbfc4ed883c73f7dbbad38de8fcc753e62"
     },
     {
       "name": "Zombie Survival Kit",
       "filename": "Zombie Survival Kit-1.20.1-forge-2.1.8.jar",
       "curseforge_project_id": 839371,
       "curseforge_file_id": 7241685,
-      "sha256": ""
+      "sha256": "b485730e948e2e1daa2cc28fc9d081e77543908d235b1ee942bdcce64c81ee7b"
     },
     {
       "name": "Timeless and Classics Zero",
       "filename": "tacz-1.20.1-1.1.7-hotfix2.jar",
       "curseforge_project_id": 1028108,
       "curseforge_file_id": 7745481,
-      "sha256": ""
+      "sha256": "fc5f1dab09afd5399604db0f60845d41d46cf015c158cbc12e7ef716cf6bdb46"
     },
     {
       "name": "Vic's Point Blank",
       "filename": "pointblank-forge-1.20.1-1.11.1.jar",
       "curseforge_project_id": 961053,
       "curseforge_file_id": 7664533,
-      "sha256": ""
+      "sha256": "df6f6f1773c62e8fdfe6f15e4be87c44dbbbb26335b9c6153482ca1b81ac4f61"
     },
     {
       "name": "Keerdm's Binoculars",
       "filename": "binocularsmod-1.02.jar",
       "curseforge_project_id": 1214525,
       "curseforge_file_id": 6334718,
-      "sha256": ""
+      "sha256": "d4d5bf00000fc464d5d2d1ee500cf33943e3b284e078c2f01886a2c635fbfaff"
     },
     {
       "name": "Frontline Combat Pack",
       "filename": "fcp-1.0.1.jar",
       "curseforge_project_id": 1465874,
       "curseforge_file_id": 7728743,
-      "sha256": ""
+      "sha256": "cefe7008c805462f536a6141ac11ff4375e3e84f1510f3945173fabfe75f3797"
     },
     {
       "name": "SBW Vintage Vehicle Pack",
       "filename": "vvp-beta-1.20.1-0.2.0.jar",
       "curseforge_project_id": 1280871,
       "curseforge_file_id": 7730939,
-      "sha256": ""
+      "sha256": "a6ae198be71e970a5b28c3ed4336d4cf787ead65f39c9c8545a6951c90b799e6"
     },
     {
       "name": "SecurityCraft",
       "filename": "[1.20.1] SecurityCraft v1.10.1.jar",
       "curseforge_project_id": 64760,
       "curseforge_file_id": 7148563,
-      "sha256": ""
+      "sha256": "ec601ba570c5351c353fc1ee0eb2f4823d1c026d265a96d3ec802070a50b6ebd"
     },
     {
       "name": "EnhancedVisuals",
       "filename": "EnhancedVisuals_FORGE_v1.8.28_mc1.20.1.jar",
       "curseforge_project_id": 255389,
       "curseforge_file_id": 8042920,
-      "sha256": ""
+      "sha256": "0eab114cd49885f37bc11710d95ace6ccbd3084e87db5fb0b317542d1a075b7a"
     },
     {
       "name": "GeckoLib",
       "filename": "geckolib-forge-1.20.1-4.8.3.jar",
       "curseforge_project_id": 388172,
       "curseforge_file_id": 7553267,
-      "sha256": ""
+      "sha256": "8b90e11871a58b63816e99c529e6c932bc88e6beb3fec97ad618e22217df3250"
     },
     {
       "name": "Create",
       "filename": "create-1.20.1-6.0.8.jar",
       "curseforge_project_id": 328085,
       "curseforge_file_id": 7178761,
-      "sha256": ""
+      "sha256": "6fbb910c367dbce8e4fc7e5bf64b6edd4de980906ed00af8e47e4af843c0d9b0"
     },
     {
       "name": "Create Deco",
       "filename": "createdeco-2.0.3-1.20.1-forge.jar",
       "curseforge_project_id": 509285,
       "curseforge_file_id": 6373226,
-      "sha256": ""
+      "sha256": "7d6dd0094d18d6bab64fcd7de680ea736015d1a1ffc472d3fe03122bc7aa0864"
     },
     {
       "name": "Curios API",
       "filename": "curios-forge-5.14.1+1.20.1.jar",
       "curseforge_project_id": 309927,
       "curseforge_file_id": 6418456,
-      "sha256": ""
+      "sha256": "1e817919a35b37cf30524aaec73f0ca5130452f23f168f844854df282eb8e51f"
     },
     {
       "name": "Balm",
       "filename": "balm-forge-1.20.1-7.3.38-all.jar",
       "curseforge_project_id": 531761,
       "curseforge_file_id": 7420617,
-      "sha256": ""
+      "sha256": "cbe8008218f0f574bc1f78b532cac5f978c33bf36ae2e14805340eab445fdb08"
     },
     {
       "name": "CreativeCore",
       "filename": "CreativeCore_FORGE_v2.12.37_mc1.20.1.jar",
       "curseforge_project_id": 257814,
       "curseforge_file_id": 8004858,
-      "sha256": ""
+      "sha256": "c6073eb7423f92709aef1e934da00983f6d4e8f05508ba0daa7287600869b441"
     },
     {
       "name": "CoroUtil",
       "filename": "coroutil-forge-1.20.1-1.3.7.jar",
       "curseforge_project_id": 237749,
       "curseforge_file_id": 5096038,
-      "sha256": ""
+      "sha256": "11448808a42c17425cf2ea39701841008683d6ad6e2838a34eef0253251a870f"
     },
     {
       "name": "Framework",
       "filename": "framework-forge-1.20.1-0.8.0.jar",
       "curseforge_project_id": 549225,
       "curseforge_file_id": 7573740,
-      "sha256": ""
+      "sha256": "37c267f46d8b8dfa81bae8c9fa9fa6467e456cadecae10722ee91b43437f25a0"
     },
     {
       "name": "Superb Warfare",
       "filename": "superbwarfare-1.20.1-0.8.8-final-6a6b54795.jar",
       "url": "https://edge.forgecdn.net/files/7292/685/superbwarfare-1.20.1-0.8.8-final-6a6b54795.jar",
-      "sha256": ""
+      "sha256": "dd5d66221097de2da5be685f3b6200b5203cc2845fbde26cb815fc0fe4a13a81"
     },
     {
       "name": "Immersive Weathering",
       "filename": "immersive_weathering-1.20.1-2.0.5-forge.jar",
       "curseforge_project_id": 592449,
       "curseforge_file_id": 6116941,
-      "sha256": ""
+      "sha256": "b88353d6efe18635bac2d4169e704320987e9678fd683217195dcdcf2c1ca1ba"
     },
     {
       "name": "Refurbished Furniture",
       "filename": "refurbished_furniture-forge-1.20.1-1.0.20.jar",
       "curseforge_project_id": 897116,
       "curseforge_file_id": 7110922,
-      "sha256": ""
+      "sha256": "480546202aa21fa07e6b1571f3e3263e5690e9804afb7c35984642bcf473bc6e"
     },
     {
       "name": "Sona",
       "filename": "Sona-1.20.1-forge-1.4.3.jar",
       "curseforge_project_id": 1023345,
       "curseforge_file_id": 7776113,
-      "sha256": ""
+      "sha256": "b8bd2c02a4ea96b6a88f92aa1ce4dbeb0063b4019be62c33df89cca062fec089"
     },
     {
       "name": "Minetraps",
       "filename": "MineTraps-1.20.2-(v.2.3.0a).jar",
       "curseforge_project_id": 311546,
       "curseforge_file_id": 5446284,
-      "sha256": ""
+      "sha256": "817579abedd583e97fc6849520ac6999d57e30000a01e4d6ea649553e4e3b244"
     },
     {
       "name": "Doomsday Decoration",
       "filename": "doomsday_decoration-1.1.3-forge-1.20.1.jar",
       "curseforge_project_id": 1180487,
       "curseforge_file_id": 6781856,
-      "sha256": ""
+      "sha256": "2572f9e0ce97cce8ff6f3f207ad164e3da8cb8b45f6658705943af176f39cc63"
     },
     {
       "name": "Atlas Lib",
       "filename": "Atlas Lib-1.20.1-1.1.12.jar",
       "curseforge_project_id": 463826,
       "curseforge_file_id": 5254550,
-      "sha256": ""
+      "sha256": "8cc9b5b46e65affed0c38aa54da6870ec4e820364c654c4dd2bb70a94ba39c50"
     },
     {
       "name": "Horror elements mod",
       "filename": "horror_element_mod-1.6.3-forge-1.20.1.jar",
       "curseforge_project_id": 496520,
       "curseforge_file_id": 7484210,
-      "sha256": ""
+      "sha256": "3caa31c97003a57a1204aa31eedf31782fe7fceeff5f6832b20faf828972a1f9"
     },
     {
       "name": "Moonlight Lib",
       "filename": "moonlight-1.20-2.16.31-forge.jar",
       "curseforge_project_id": 499980,
       "curseforge_file_id": 8044110,
-      "sha256": ""
+      "sha256": "209217a0107b96ef6751b0a77c4a74896e08af198a0cc58fe837e6cf59f15aa1"
     },
     {
       "name": "Puzzles Lib",
       "filename": "PuzzlesLib-v8.1.33-1.20.1-Forge.jar",
       "curseforge_project_id": 495476,
       "curseforge_file_id": 6918565,
-      "sha256": ""
+      "sha256": "f3077a9f817629b8e8929c1951042d1a1adc62d30b72adebd54d2b074a4faf4f"
     },
     {
       "name": "First Aid",
       "filename": "firstaid-1.20.1-1.1.jar",
       "curseforge_project_id": 276837,
       "curseforge_file_id": 5531834,
-      "sha256": ""
+      "sha256": "c2021a688e301f7a44da0ae04163ec8b8f077154e02c48e89063027b0cf33e4a"
     },
     {
       "name": "Skin Restorer",
       "filename": "skinrestorer-2.7.0+1.20-forge.jar",
       "curseforge_project_id": 443823,
       "curseforge_file_id": 7785913,
-      "sha256": ""
+      "sha256": "7795a3e28f0f9cb8ef58b0a7bcdeddaa35e7ed660042c7573d5fb5ea145acc1b"
     },
     {
       "name": "Ambient Environment",
       "filename": "AmbientEnvironment-forge-1.20.1-11.0.0.1.jar",
       "curseforge_project_id": 320163,
       "curseforge_file_id": 4598390,
-      "sha256": ""
+      "sha256": "4889e05ade9095a40886db99e33abbbc50ccd931ae5052db6180da896c68d75d"
     },
     {
       "name": "Sophisticated Backpacks",
       "filename": "sophisticatedbackpacks-1.20.1-3.24.38.1738.jar",
       "curseforge_project_id": 422301,
       "curseforge_file_id": 8034902,
-      "sha256": ""
+      "sha256": "1bdf2daeadbfee1048fa2dd7a29a2abf4872c1f4f33ad826ee260a66ea856d9a"
     },
     {
       "name": "Walkie-Talkie",
       "filename": "walkietalkie-forge-1.20.1-1.3.0.jar",
       "curseforge_project_id": 825621,
       "curseforge_file_id": 5133440,
-      "sha256": ""
+      "sha256": "4fdba55afc3b06eb7f646527437d1233a8f556ce3ad5712d8781f37525c7189b"
     },
     {
       "name": "Just Enough Items",
       "filename": "jei-1.20.1-forge-15.20.0.129.jar",
       "curseforge_project_id": 238222,
       "curseforge_file_id": 7391695,
-      "sha256": ""
+      "sha256": "5e5af05aa082f5844c7b3ed0b3bd9374e160ae1914906f71d90c5656e4e80039"
     },
     {
       "name": "Extra Zombie Drops",
       "filename": "extra_zombie_drops-1.0.0.jar",
       "curseforge_project_id": 822109,
       "curseforge_file_id": 6765912,
-      "sha256": ""
+      "sha256": "71fdf364192f416e208bf9f544435c81a86642869d8a4754c9c9ed78555955f2"
     },
     {
       "name": "AppleSkin",
       "filename": "appleskin-forge-mc1.20.1-2.5.1.jar",
       "curseforge_project_id": 248787,
       "curseforge_file_id": 4770828,
-      "sha256": ""
+      "sha256": "e12419e43e3babc810af289403c5cd96bd7f09809b389acc6bb2f122b4b2a426"
     },
     {
       "name": "Zombie Infection Vaccine",
       "filename": "cure-2.0.2-forge-1.20.1.jar",
       "curseforge_project_id": 887582,
       "curseforge_file_id": 5547475,
-      "sha256": ""
+      "sha256": "542188e04d8553b584087ac86468835f2bc32bfa88171ff9ab4a320c8ae07767"
     },
     {
       "name": "BadOptimizations",
       "filename": "BadOptimizations-2.4.1-1.20.1.jar",
       "curseforge_project_id": 949555,
       "curseforge_file_id": 7338200,
-      "sha256": ""
+      "sha256": "3da53cdf856757d9ec7df0be86bc23b2c7d67a019b490f8f64317d4d9b77cac8"
     },
-        {
+    {
       "name": "Medical Remedies",
       "filename": "marbledsfirstaid-1.20.1forge-1.2.1.0.jar",
       "curseforge_project_id": 1185929,
       "curseforge_file_id": 8023446,
-      "sha256": ""
+      "sha256": "2a79199c9452076fabc7f62bc3ca864176bb309c6ac10cea8eadb9c58dd39026"
     },
     {
       "name": "Architectury API",
       "filename": "architectury-9.2.14-forge.jar",
       "curseforge_project_id": 419699,
       "curseforge_file_id": 5137938,
-      "sha256": ""
+      "sha256": "218b471d0b8a1f6cda14cfc1beb9eeb0df54304500acc6c5613d9b88ec65d9af"
     },
     {
       "name": "Sophisticated Core",
       "filename": "sophisticatedcore-1.20.1-1.3.34.1844.jar",
       "curseforge_project_id": 618298,
       "curseforge_file_id": 8046954,
-      "sha256": ""
+      "sha256": "e22bb4a417217b44db8ae5a1fb5b534814efc2f8b8f1f7c07e794eb4ff7efcf1"
     },
     {
       "name": "Embeddium",
       "filename": "embeddium-0.3.31+mc1.20.1.jar",
       "curseforge_project_id": 908741,
       "curseforge_file_id": 5681725,
-      "sha256": ""
+      "sha256": "eed3d1325f2acc2fd4e69bb495e5ccb91d962126ac5330f0582ebc2a3daf47fb"
     },
     {
       "name": "Oculus",
       "filename": "oculus-mc1.20.1-1.8.0.jar",
       "curseforge_project_id": 581495,
       "curseforge_file_id": 6020952,
-      "sha256": ""
+      "sha256": "0945df0cba0f62b3901dd80c3268e5311b770ece78c78037a45db12ac0425fef"
     },
     {
       "name": "Lootr",
       "filename": "lootr-forge-1.20-0.7.35.94.jar",
       "curseforge_project_id": 361276,
       "curseforge_file_id": 7263076,
-      "sha256": ""
+      "sha256": "01200ee5889e6bcc3c5fa8f32b7b49a4bd58e653699eeb655c6f2dd314e3ce51"
     },
     {
       "name": "Panda's Falling Trees",
       "filename": "fallingtrees-forge-mc1.20-0.13.2-SNAPSHOT.jar",
       "curseforge_project_id": 880630,
       "curseforge_file_id": 6231030,
-      "sha256": ""
+      "sha256": "6b4853214c5cc156b187b86162df2db028c0ddcf90380fa1897068cde2622de1"
     },
     {
       "name": "PandaLib",
       "filename": "pandalib-forge-mc1.20-0.5.2-SNAPSHOT.jar",
       "curseforge_project_id": 975460,
       "curseforge_file_id": 6245108,
-      "sha256": ""
+      "sha256": "1595c586e9c3e7e9a455d23b1686cc82f8d9e11578efd86a10a7031995301390"
     },
     {
       "name": "Access Denied",
       "filename": "access_denied-6.2.1.jar",
       "curseforge_project_id": 917449,
       "curseforge_file_id": 7193940,
-      "sha256": ""
+      "sha256": "fab1793518b901d12156203757becf5aabbf4c9a6fe066ca9550ec50cdac26f7"
     },
     {
       "name": "Polymorph",
       "filename": "polymorph-forge-0.49.10+1.20.1.jar",
       "curseforge_project_id": 388800,
       "curseforge_file_id": 6450982,
-      "sha256": ""
+      "sha256": "cbe63a0a1cb6ae8dbc0e29bb96d149a137cd4e714b295fa49d230994091d157f"
     },
     {
       "name": "Sinytra Connector",
       "filename": "Connector-1.0.0-beta.48+1.20.1.jar",
       "curseforge_project_id": 890127,
       "curseforge_file_id": 7594389,
-      "sha256": ""
+      "sha256": "6226500de5d240d44244d8f35b402148667cc37a75d63d0e55800e049c82905c"
     },
     {
       "name": "Forgified Fabric API",
       "filename": "fabric-api-0.92.6+1.11.14+1.20.1.jar",
       "curseforge_project_id": 889079,
       "curseforge_file_id": 6885853,
-      "sha256": ""
+      "sha256": "9b140af437581d32e5ee17d20f8fe882000e6a34cba85c152ae5bccc9570cc03"
     }
   ],
   "resourcepacks": [
@@ -518,20 +518,23 @@
       "name": "Tissou's Zombie Pack",
       "filename": "TZP_1.20.1_2.7.zip",
       "curseforge_project_id": 312822,
-      "curseforge_file_id": 4750306
+      "curseforge_file_id": 4750306,
+      "sha256": "aed1af48318a160f049fe8ac52d8445848de89eebc530c45dd5c0c5dc7af95bb"
     },
     {
       "name": "Fresh Animations",
       "filename": "FreshAnimations_v1.10.4.zip",
       "curseforge_project_id": 453763,
-      "curseforge_file_id": 7670377
+      "curseforge_file_id": 7670377,
+      "sha256": "8e44b29560d2e7d952c0a4f77f0451e6dcb048f827189bffc712b446be8de7f2"
     }
   ],
   "shaderpacks": [
     {
       "name": "Complementary Reimagined",
       "filename": "ComplementaryReimagined_r5.8.1.zip",
-      "url": "https://cdn.modrinth.com/data/HVnmMxH1/versions/yCCduG44/ComplementaryReimagined_r5.8.1.zip"
+      "url": "https://cdn.modrinth.com/data/HVnmMxH1/versions/yCCduG44/ComplementaryReimagined_r5.8.1.zip",
+      "sha256": "3f1cd389e717b2e62f58edff222059b9c60de71b14bb49b517eb58318ce35b15"
     }
   ]
 }
