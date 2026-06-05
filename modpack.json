@@ -33,6 +33,13 @@
       "sha256": "d330d9cb7592035cf580a75621b1113c0fc50dd1ad7e1b5b071155930394f3da"
     },
     {
+      "name": "Controlling",
+      "filename": "Controlling-forge-1.20.1-12.0.2.jar",
+      "curseforge_project_id": 250398,
+      "curseforge_file_id": 4646682,
+      "sha256": "516308a93824119f6a1ebc75425aa21ee8f8de0c331942793a054ba6d9c24944"
+    },
+    {
       "name": "Chovy's Apocalypse",
       "filename": "chovys_apocalypse_mod-1.9.jar",
       "curseforge_project_id": 1201158,
