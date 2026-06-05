@@ -3,6 +3,9 @@ build/
 dist/
 *.manifest
 
+# --- Dossier serveur généré par server_setup.py ---
+server/
+
 # --- Caches Python ---
 __pycache__/
 *.py[cod]
