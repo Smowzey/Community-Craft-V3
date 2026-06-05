@@ -40,6 +40,13 @@
       "sha256": "516308a93824119f6a1ebc75425aa21ee8f8de0c331942793a054ba6d9c24944"
     },
     {
+      "name": "Searchables",
+      "filename": "Searchables-forge-1.20.1-1.0.3.jar",
+      "curseforge_project_id": 858542,
+      "curseforge_file_id": 5284015,
+      "sha256": "c1a76e93886210574d3f298c0461241fb711e52ac22c7a04d3236840f29e6576"
+    },
+    {
       "name": "Chovy's Apocalypse",
       "filename": "chovys_apocalypse_mod-1.9.jar",
       "curseforge_project_id": 1201158,
