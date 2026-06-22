@@ -499,13 +499,6 @@
       "sha256": "1595c586e9c3e7e9a455d23b1686cc82f8d9e11578efd86a10a7031995301390"
     },
     {
-      "name": "Access Denied",
-      "filename": "access_denied-6.2.1.jar",
-      "curseforge_project_id": 917449,
-      "curseforge_file_id": 7193940,
-      "sha256": "fab1793518b901d12156203757becf5aabbf4c9a6fe066ca9550ec50cdac26f7"
-    },
-    {
       "name": "Polymorph",
       "filename": "polymorph-forge-0.49.10+1.20.1.jar",
       "curseforge_project_id": 388800,
