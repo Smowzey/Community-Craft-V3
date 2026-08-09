@@ -26,17 +26,19 @@ CATEGORIES = [
 
 def resolve_url(item, filename):
     url = item.get("url")
-    if url:
-        return url
-    if "curseforge_project_id" in item and "curseforge_file_id" in item:
-        return mm.get_curseforge_download_url(
-            item["curseforge_project_id"], item["curseforge_file_id"], filename
-        )
-    return None
+    if not url:
+        if "curseforge_project_id" in item and "curseforge_file_id" in item:
+            url = mm.get_curseforge_download_url(
+                item["curseforge_project_id"], item["curseforge_file_id"], filename
+            )
+    if not url:
+        return None
+    # Mêmes règles que le launcher : HTTPS + hôte connu
+    return mm.check_download_url(url)
 
 
 def compute_sha(item, target_dir, ext):
-    filename = item.get("filename", item.get("name", "x") + ext)
+    filename = mm.safe_filename(item.get("filename") or (str(item.get("name", "x")) + ext), "x" + ext)
     local = os.path.join(target_dir, filename)
     # 1) Fichier local valide
     if os.path.exists(local) and zipfile.is_zipfile(local):

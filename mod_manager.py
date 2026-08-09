@@ -8,11 +8,88 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 
 MODPACK_URL = "https://raw.githubusercontent.com/Smowzey/community-craft-v3/main/modpack.json"
-MODS_DIR = os.path.join(os.getenv("APPDATA"), ".community-craft-v3", "mods")
-RESOURCEPACKS_DIR = os.path.join(os.getenv("APPDATA"), ".community-craft-v3", "resourcepacks")
-SHADERPACKS_DIR = os.path.join(os.getenv("APPDATA"), ".community-craft-v3", "shaderpacks")
-CONFIG_DIR = os.path.join(os.getenv("APPDATA"), ".community-craft-v3", "config")
-CURSEFORGE_API_KEY = "$2a$10$ogJO1kKcvpUth60qurFiaeaJ8vjDyk3Z0v2W54oXt/cbyi2gbpSvy"  # → console.curseforge.com
+GAME_DIR = os.path.join(os.getenv("APPDATA") or os.path.expanduser("~"), ".community-craft-v3")
+MODS_DIR = os.path.join(GAME_DIR, "mods")
+RESOURCEPACKS_DIR = os.path.join(GAME_DIR, "resourcepacks")
+SHADERPACKS_DIR = os.path.join(GAME_DIR, "shaderpacks")
+CONFIG_DIR = os.path.join(GAME_DIR, "config")
+
+# Hôtes autorisés pour les téléchargements. Le modpack.json est distant : sans
+# cette liste, quiconque pourrait le modifier pourrait faire télécharger
+# n'importe quel fichier depuis n'importe quel serveur.
+ALLOWED_HOSTS = (
+    "edge.forgecdn.net",
+    "mediafilez.forgecdn.net",
+    "media.forgecdn.net",
+    "api.curseforge.com",
+    "cdn.modrinth.com",
+    "api.modrinth.com",
+    "github.com",
+    "raw.githubusercontent.com",
+    "objects.githubusercontent.com",
+    "codeload.github.com",
+)
+
+# ⚠️ Cette clé a été publiée en clair sur le dépôt GitHub : elle est compromise.
+# Elle ne sert plus que de secours pour ne pas casser les installations existantes.
+# Génère-en une nouvelle sur console.curseforge.com puis mets-la soit dans la
+# variable d'environnement CURSEFORGE_API_KEY, soit dans un fichier
+# curseforge_key.txt (à côté du launcher ou dans le dossier du jeu).
+_FALLBACK_API_KEY = "$2a$10$ogJO1kKcvpUth60qurFiaeaJ8vjDyk3Z0v2W54oXt/cbyi2gbpSvy"
+
+
+def _load_api_key() -> str:
+    """Récupère la clé CurseForge sans la coder en dur dans le dépôt."""
+    key = (os.environ.get("CURSEFORGE_API_KEY") or "").strip()
+    if key:
+        return key
+    candidates = [
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "curseforge_key.txt"),
+        os.path.join(GAME_DIR, "curseforge_key.txt"),
+    ]
+    for path in candidates:
+        try:
+            if os.path.exists(path):
+                with open(path, "r", encoding="utf-8") as f:
+                    key = f.read().strip()
+                if key:
+                    return key
+        except OSError:
+            pass
+    return _FALLBACK_API_KEY
+
+
+CURSEFORGE_API_KEY = _load_api_key()
+
+
+def safe_filename(raw_name: str, fallback: str = "fichier_inconnu") -> str:
+    """Nettoie un nom de fichier venant du modpack.json distant.
+
+    Empêche l'écriture hors du dossier cible (« ../../Démarrage/virus.exe ») et
+    les noms réservés Windows. On ne garde que le nom de fichier final.
+    """
+    name = os.path.basename(str(raw_name or "").replace("\\", "/").strip())
+    # Caractères interdits sous Windows + tout ce qui reste de suspect
+    for bad in '<>:"|?*\0':
+        name = name.replace(bad, "_")
+    name = name.strip(" .")
+    if not name or name in (".", ".."):
+        return fallback
+    reserved = {"con", "prn", "aux", "nul"} | {f"com{i}" for i in range(1, 10)} | {f"lpt{i}" for i in range(1, 10)}
+    if name.split(".")[0].lower() in reserved:
+        name = "_" + name
+    return name[:180]
+
+
+def check_download_url(url: str) -> str:
+    """Valide une URL de téléchargement : HTTPS uniquement + hôte connu."""
+    parsed = urllib.parse.urlparse(str(url or ""))
+    if parsed.scheme != "https":
+        raise Exception(f"URL refusée (HTTPS obligatoire) : {url}")
+    host = (parsed.hostname or "").lower()
+    if host not in ALLOWED_HOSTS:
+        raise Exception(f"URL refusée (hôte non autorisé : {host})")
+    return url
 
 
 def fetch_modpack() -> dict:
@@ -46,7 +123,7 @@ def get_curseforge_download_url(project_id: int, file_id: int, filename: str) ->
             return data
         
     # Si l'auteur a bloqué les téléchargements tiers, on recrée l'URL manuellement (Edge CDN)
-    file_id_str = str(file_id)
+    file_id_str = str(int(file_id))
     # Découpage correct pour les ID à 6 ou 7 chiffres (ex: 1234567 -> 1234 / 567)
     part1 = file_id_str[:-3]
     part2 = file_id_str[-3:]
@@ -55,12 +132,18 @@ def get_curseforge_download_url(project_id: int, file_id: int, filename: str) ->
 
 def download_file_item(item: dict, target_dir: str, default_ext: str, on_progress=None):
     os.makedirs(target_dir, exist_ok=True)
-    
-    # On s'assure d'avoir au moins un nom de fichier, sinon on utilise le nom par défaut
-    filename = item.get("filename", item.get("name", "fichier_inconnu") + default_ext)
+
+    # On s'assure d'avoir au moins un nom de fichier, sinon on utilise le nom par défaut.
+    # Le nom vient d'un fichier distant : on le nettoie avant de l'utiliser sur le disque.
+    raw_name = item.get("filename") or (str(item.get("name", "fichier_inconnu")) + default_ext)
+    filename = safe_filename(raw_name, "fichier_inconnu" + default_ext)
     filepath = os.path.join(target_dir, filename)
 
-    expected_sha = item.get("sha256", "")
+    # Ceinture et bretelles : le fichier doit rester dans le dossier cible
+    if os.path.dirname(os.path.abspath(filepath)) != os.path.abspath(target_dir):
+        raise Exception(f"Nom de fichier refusé : {raw_name!r}")
+
+    expected_sha = str(item.get("sha256", "") or "").strip().lower()
 
     # Déjà installé, intègre et à jour ?
     if os.path.exists(filepath):
@@ -90,6 +173,10 @@ def download_file_item(item: dict, target_dir: str, default_ext: str, on_progres
             )
         else:
             raise Exception(f"Le fichier '{item.get('name', filename)}' n'a pas d'ID CurseForge ni d'URL dans modpack.json.")
+
+    # L'URL vient d'un fichier distant : on vérifie qu'elle est en HTTPS et qu'elle
+    # pointe bien vers un hôte connu avant d'écrire quoi que ce soit sur le disque.
+    download_url = check_download_url(download_url)
 
     # On ajoute une fausse "carte d'identité" (User-Agent) pour que Modrinth ne nous bloque pas
     headers = {"User-Agent": "CommunityCraft-Launcher/3.0"}
@@ -146,6 +233,52 @@ def validate_mods() -> list:
     return corrupt
 
 
+def _read_properties_lines(path: str) -> list:
+    if not os.path.exists(path):
+        return []
+    with open(path, "r", encoding="utf-8", errors="ignore") as f:
+        return f.read().splitlines()
+
+
+def _write_properties(path: str, lines: list, updates: dict):
+    """Réécrit un fichier .properties en ne changeant que les clés demandées."""
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    seen = set()
+    out = []
+    for line in lines:
+        if "=" in line and not line.startswith("#"):
+            key = line.split("=", 1)[0].strip()
+            if key in updates:
+                out.append(f"{key}={updates[key]}")
+                seen.add(key)
+                continue
+        out.append(line)
+    for key, value in updates.items():
+        if key not in seen:
+            out.append(f"{key}={value}")
+    if not out or not out[0].startswith("#"):
+        out.insert(0, "#Managed by Community Craft Launcher")
+
+    # Écriture atomique : évite un fichier de config à moitié écrit si ça coupe
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write("\n".join(out) + "\n")
+    os.replace(tmp, path)
+
+
+def set_shaders_enabled(enabled: bool):
+    """Active / désactive les shaders (Oculus) sans toucher au shader choisi.
+
+    Couper les shaders est de loin le plus gros gain de FPS possible.
+    """
+    oculus_path = os.path.join(CONFIG_DIR, "oculus.properties")
+    try:
+        lines = _read_properties_lines(oculus_path)
+        _write_properties(oculus_path, lines, {"enableShaders": "true" if enabled else "false"})
+    except Exception as e:
+        print(f"set_shaders_enabled: {e}")
+
+
 def ensure_default_shader(default_filename: str):
     """Active le shader par defaut du pack dans oculus.properties.
 
@@ -156,49 +289,28 @@ def ensure_default_shader(default_filename: str):
     - Si le shader selectionne a ete supprime (ex: ancien Hysteria) -> on remplace par le
       shader par defaut, en conservant le reglage enableShaders existant (on/off).
     """
+    default_filename = safe_filename(default_filename, "")
     if not default_filename:
         return
     try:
         oculus_path = os.path.join(CONFIG_DIR, "oculus.properties")
-        lines = []
-        if os.path.exists(oculus_path):
-            with open(oculus_path, "r", encoding="utf-8", errors="ignore") as f:
-                lines = f.read().splitlines()
+        lines = _read_properties_lines(oculus_path)
 
         current = None
         for line in lines:
             if line.startswith("shaderPack="):
-                current = line.split("=", 1)[1].strip()
+                current = safe_filename(line.split("=", 1)[1].strip(), "")
                 break
 
         # Le shader actuel est-il toujours present sur le disque ?
         if current and os.path.exists(os.path.join(SHADERPACKS_DIR, current)):
             return  # choix du joueur valide -> on n'y touche pas
 
-        had_file = os.path.exists(oculus_path)
         updates = {"shaderPack": default_filename}
-        if not had_file:
+        if not os.path.exists(oculus_path):
             updates["enableShaders"] = "true"  # nouvelle install : on active le shader de base
 
-        os.makedirs(CONFIG_DIR, exist_ok=True)
-        seen = set()
-        out = []
-        for line in lines:
-            if "=" in line and not line.startswith("#"):
-                key = line.split("=", 1)[0].strip()
-                if key in updates:
-                    out.append(f"{key}={updates[key]}")
-                    seen.add(key)
-                    continue
-            out.append(line)
-        for key, value in updates.items():
-            if key not in seen:
-                out.append(f"{key}={value}")
-        if not out or not out[0].startswith("#"):
-            out.insert(0, "#Managed by Community Craft Launcher")
-
-        with open(oculus_path, "w", encoding="utf-8") as f:
-            f.write("\n".join(out) + "\n")
+        _write_properties(oculus_path, lines, updates)
     except Exception as e:
         print(f"ensure_default_shader: {e}")
 
@@ -228,8 +340,10 @@ def sync_mods(on_progress=None, on_complete=None, on_overall=None):
             for key, target_dir, ext in categories:
                 valid_by_dir.setdefault(target_dir, set())
                 for item in modpack.get(key, []):
-                    filename = item.get("filename", item.get("name", "inconnu") + ext)
-                    valid_by_dir[target_dir].add(filename)
+                    # Même nettoyage que dans download_file_item, sinon le ménage
+                    # ci-dessous supprimerait le fichier qu'on vient de télécharger
+                    raw_name = item.get("filename") or (str(item.get("name", "inconnu")) + ext)
+                    valid_by_dir[target_dir].add(safe_filename(raw_name, "fichier_inconnu" + ext))
                     tasks.append((item, target_dir, ext))
 
             total = len(tasks)

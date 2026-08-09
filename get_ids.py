@@ -1,10 +1,13 @@
 import requests
 import json
+import mod_manager as mm
 
-API_KEY = "$2a$10$ogJO1kKcvpUth60qurFiaeaJ8vjDyk3Z0v2W54oXt/cbyi2gbpSvy"
+# La clé n'est plus écrite en dur ici : elle vient de la variable d'environnement
+# CURSEFORGE_API_KEY ou d'un fichier curseforge_key.txt (voir mod_manager.py).
+API_KEY = mm.CURSEFORGE_API_KEY
 
 if API_KEY == "":
-    print("❌ ERREUR : Tu as oublié de coller ta clé d'API CurseForge dans le fichier get_ids.py !")
+    print("❌ ERREUR : aucune clé d'API CurseForge trouvée (variable CURSEFORGE_API_KEY ou curseforge_key.txt) !")
     exit(1)
 
 MC_VERSION = "1.20.1"
