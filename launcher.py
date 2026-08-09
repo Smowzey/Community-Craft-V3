@@ -34,7 +34,7 @@ ctk.set_default_color_theme("blue")
 
 SERVER_NAME = "Community Craft V3"
 MC_VERSION = "1.20.1"
-FORGE_VERSION = "47.3.0"
+FORGE_VERSION = "47.4.10"
 PACK_VERSION = "v3.1"
 
 # Version du launcher (utilisée pour l'auto-update)

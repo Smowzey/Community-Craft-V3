@@ -1,7 +1,7 @@
 {
   "name": "Community Craft V3",
   "mc_version": "1.20.1",
-  "forge_version": "47.3.0",
+  "forge_version": "47.4.10",
   "pack_version": "1.0",
   "mods": [
     {
@@ -518,6 +518,27 @@
       "curseforge_project_id": 889079,
       "curseforge_file_id": 6885853,
       "sha256": "9b140af437581d32e5ee17d20f8fe882000e6a34cba85c152ae5bccc9570cc03"
+    },
+    {
+      "name": "WorldEdit",
+      "filename": "worldedit-mod-7.2.15.jar",
+      "curseforge_project_id": 225608,
+      "curseforge_file_id": 4586218,
+      "sha256": "17db6b3e94f52d25426684663e1e1846823cbb7907f1c365ac329e5bc7bfaf2c"
+    },
+    {
+      "name": "FTB Library",
+      "filename": "ftb-library-forge-2001.2.13.jar",
+      "curseforge_project_id": 404465,
+      "curseforge_file_id": 8226927,
+      "sha256": "41810281b65336265cae2c88412022d02f2f0a3f28c66a06173d86f98acf14a7"
+    },
+    {
+      "name": "FTB Teams",
+      "filename": "ftb-teams-forge-2001.3.2.jar",
+      "curseforge_project_id": 404468,
+      "curseforge_file_id": 7499810,
+      "sha256": "b1cb4d82ea9f137a87e12a7aaf3329619294b56f7d70337dfd557a76e10b6e07"
     }
   ],
   "resourcepacks": [
