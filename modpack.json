@@ -527,6 +527,20 @@
       "sha256": "17db6b3e94f52d25426684663e1e1846823cbb7907f1c365ac329e5bc7bfaf2c"
     },
     {
+      "name": "KubeJS",
+      "filename": "kubejs-forge-2001.6.5-build.26.jar",
+      "curseforge_project_id": 238086,
+      "curseforge_file_id": 8020595,
+      "sha256": "1769312192fbf9d72f45054ba61130523bfb471b5f480a4bff8c210ec09400bb"
+    },
+    {
+      "name": "Rhino",
+      "filename": "rhino-forge-2001.2.3-build.10.jar",
+      "curseforge_project_id": 416294,
+      "curseforge_file_id": 6186971,
+      "sha256": "fed2211429301bf043864183cab9ab8e92d4cc4dbb9e488ce6c75217c54584a6"
+    },
+    {
       "name": "FTB Library",
       "filename": "ftb-library-forge-2001.2.13.jar",
       "curseforge_project_id": 404465,
