@@ -375,18 +375,39 @@ def sync_mods(on_progress=None, on_complete=None, on_overall=None):
                     on_complete(errors[0])
                 return
 
-            # Nettoyage : on supprime les fichiers qui ne sont plus dans le modpack.json
+            # Nettoyage : on supprime les fichiers qui ne sont plus dans le modpack.json.
+            # On ne touche qu'aux archives gérées par le launcher (.jar / .zip) : Oculus
+            # enregistre les réglages d'un shader dans « shaderpacks/MonShader.zip.txt »,
+            # et ce fichier doit survivre à la synchro (sinon le joueur perd ses options
+            # de shader à chaque lancement).
             for key, target_dir, ext in categories:
-                if os.path.exists(target_dir):
-                    for file in os.listdir(target_dir):
-                        filepath = os.path.join(target_dir, file)
-                        if os.path.isfile(filepath) and file not in valid_by_dir[target_dir]:
-                            if on_progress:
-                                on_progress(file, "deleting")
-                            try:
-                                os.remove(filepath)
-                            except:
-                                pass
+                if not os.path.exists(target_dir):
+                    continue
+                valid = valid_by_dir[target_dir]
+                # Réglages à conserver : « <archive gardée>.txt »
+                keep_settings = {f"{name}.txt".lower() for name in valid}
+                for file in os.listdir(target_dir):
+                    filepath = os.path.join(target_dir, file)
+                    if not os.path.isfile(filepath) or file in valid:
+                        continue
+
+                    lower = file.lower()
+                    is_managed_archive = lower.endswith(ext)
+                    # Réglages d'un shader qui n'est plus dans le modpack -> orphelin
+                    is_orphan_settings = (
+                        target_dir == SHADERPACKS_DIR
+                        and lower.endswith(".txt")
+                        and lower not in keep_settings
+                    )
+                    if not (is_managed_archive or is_orphan_settings):
+                        continue  # fichier qui n'appartient pas au launcher : on le laisse
+
+                    if on_progress:
+                        on_progress(file, "deleting")
+                    try:
+                        os.remove(filepath)
+                    except:
+                        pass
 
             # Active le shader de base du pack (1er de la liste) si necessaire
             shaderpacks = modpack.get("shaderpacks", [])
