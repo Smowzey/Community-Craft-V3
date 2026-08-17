@@ -1,5 +1,7 @@
 import os
+import base64
 import hashlib
+import json
 import requests
 import threading
 import urllib.parse
@@ -7,8 +9,38 @@ import zipfile
 import time
 from concurrent.futures import ThreadPoolExecutor
 
-MODPACK_URL = "https://raw.githubusercontent.com/Smowzey/community-craft-v3/main/modpack.json"
+GITHUB_OWNER = "Smowzey"
+GITHUB_REPO = "community-craft-v3"
+GITHUB_BRANCH = "main"
+
+MODPACK_URL = f"https://raw.githubusercontent.com/{GITHUB_OWNER}/{GITHUB_REPO}/{GITHUB_BRANCH}/modpack.json"
+
+# GitHub limite le nombre de requêtes par IP sur raw.githubusercontent.com : quand
+# plusieurs joueurs lancent le launcher en même temps (ou derrière le même réseau),
+# on récupère un « 429 Too Many Requests » ou une connexion qui traîne jusqu'au
+# timeout. On garde donc plusieurs sources pour le même fichier, essayées dans
+# l'ordre, de la plus fraîche à la plus tolérante :
+#   1. raw.githubusercontent.com  -> la source normale
+#   2. api.github.com             -> même contenu, autre quota, toujours à jour
+#   3. cdn.jsdelivr.net           -> CDN mondial, peut avoir quelques heures de retard
+MODPACK_SOURCES = (
+    MODPACK_URL,
+    f"https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}/contents/modpack.json?ref={GITHUB_BRANCH}",
+    f"https://cdn.jsdelivr.net/gh/{GITHUB_OWNER}/{GITHUB_REPO}@{GITHUB_BRANCH}/modpack.json",
+)
+
+# Sans User-Agent, GitHub prend le launcher pour un robot et répond 429 plus vite.
+USER_AGENT = "CommunityCraft-Launcher/3.3 (+https://github.com/Smowzey/community-craft-v3)"
+HTTP_HEADERS = {"User-Agent": USER_AGENT}
+
+# (connexion, lecture) : on laisse le temps à GitHub de répondre quand il rame,
+# au lieu d'abandonner au bout de 10 s.
+HTTP_TIMEOUT = (10, 30)
+
 GAME_DIR = os.path.join(os.getenv("APPDATA") or os.path.expanduser("~"), ".community-craft-v3")
+# Dernier modpack.json valide reçu : filet de sécurité si GitHub est injoignable
+# au moment d'une ouverture de serveur.
+MODPACK_CACHE = os.path.join(GAME_DIR, "modpack.cache.json")
 MODS_DIR = os.path.join(GAME_DIR, "mods")
 RESOURCEPACKS_DIR = os.path.join(GAME_DIR, "resourcepacks")
 SHADERPACKS_DIR = os.path.join(GAME_DIR, "shaderpacks")
@@ -92,15 +124,90 @@ def check_download_url(url: str) -> str:
     return url
 
 
+def _parse_modpack_payload(response) -> dict:
+    """Transforme une réponse en dictionnaire modpack.
+
+    L'API GitHub ne renvoie pas le fichier tel quel mais une enveloppe JSON
+    contenant le fichier encodé en base64 : on la déballe ici.
+    """
+    data = response.json()
+    if not isinstance(data, dict):
+        raise Exception("réponse inattendue (ce n'est pas un modpack)")
+    if data.get("encoding") == "base64" and data.get("content"):
+        data = json.loads(base64.b64decode(data["content"]).decode("utf-8"))
+    if not isinstance(data, dict) or "mods" not in data:
+        raise Exception("modpack.json invalide (clé « mods » absente)")
+    return data
+
+
+def _save_modpack_cache(modpack: dict):
+    try:
+        os.makedirs(GAME_DIR, exist_ok=True)
+        tmp = MODPACK_CACHE + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(modpack, f)
+        os.replace(tmp, MODPACK_CACHE)
+    except Exception as e:
+        print(f"cache modpack non écrit : {e}")
+
+
+def _load_modpack_cache():
+    try:
+        if os.path.exists(MODPACK_CACHE):
+            with open(MODPACK_CACHE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            if isinstance(data, dict) and "mods" in data:
+                return data
+    except Exception as e:
+        print(f"cache modpack illisible : {e}")
+    return None
+
+
 def fetch_modpack() -> dict:
-    # On ajoute un timestamp à l'URL pour empêcher GitHub de nous donner un vieux fichier en cache
-    url_sans_cache = f"{MODPACK_URL}?t={int(time.time())}"
-    response = requests.get(url_sans_cache, timeout=10)
-    if response.status_code == 404:
-        raise Exception("modpack.json introuvable sur GitHub (Dépôt privé ou mauvaise branche ?)")
-    elif response.status_code != 200:
-        raise Exception(f"Erreur HTTP {response.status_code} en récupérant le modpack.")
-    return response.json()
+    """Récupère le modpack.json, en résistant aux caprices de GitHub.
+
+    On essaie chaque source à tour de rôle, deux fois, avec une pause qui
+    s'allonge. En tout dernier recours on repart sur le dernier modpack.json
+    valide déjà reçu : mieux vaut lancer le jeu avec la liste de la veille que
+    de bloquer les joueurs devant une erreur réseau.
+    """
+    errors = []
+    for attempt in range(2):
+        for source in MODPACK_SOURCES:
+            # Cache-buster : GitHub garde le fichier ~5 min en cache CDN. On l'arrondit
+            # à la minute pour rester frais sans forcer un aller-retour complet à chaque
+            # clic (ce qui accélère justement l'arrivée du 429).
+            sep = "&" if "?" in source else "?"
+            url = f"{source}{sep}t={int(time.time() // 60)}"
+            headers = dict(HTTP_HEADERS)
+            if "api.github.com" in source:
+                headers["Accept"] = "application/vnd.github+json"
+            try:
+                response = requests.get(url, timeout=HTTP_TIMEOUT, headers=headers)
+                if response.status_code == 200:
+                    modpack = _parse_modpack_payload(response)
+                    _save_modpack_cache(modpack)
+                    return modpack
+                if response.status_code == 404:
+                    errors.append(f"{urllib.parse.urlparse(source).hostname} : introuvable (404)")
+                elif response.status_code == 429:
+                    errors.append(f"{urllib.parse.urlparse(source).hostname} : trop de requêtes (429)")
+                else:
+                    errors.append(f"{urllib.parse.urlparse(source).hostname} : HTTP {response.status_code}")
+            except Exception as e:
+                errors.append(f"{urllib.parse.urlparse(source).hostname} : {type(e).__name__}")
+        if attempt == 0:
+            time.sleep(3)  # laisse passer le pic avant de retenter
+
+    cached = _load_modpack_cache()
+    if cached is not None:
+        print("modpack : GitHub injoignable, utilisation du cache local (" + " | ".join(errors) + ")")
+        return cached
+
+    raise Exception(
+        "impossible de récupérer la liste des mods (GitHub injoignable). Détail : "
+        + " | ".join(errors[-3:])
+    )
 
 
 def sha256_of_file(filepath: str) -> str:
@@ -113,15 +220,20 @@ def sha256_of_file(filepath: str) -> str:
 
 def get_curseforge_download_url(project_id: int, file_id: int, filename: str) -> str:
     """Récupère l'URL de téléchargement depuis l'API CurseForge."""
-    headers = {"x-api-key": CURSEFORGE_API_KEY}
+    headers = {"x-api-key": CURSEFORGE_API_KEY, "User-Agent": USER_AGENT}
     url = f"https://api.curseforge.com/v1/mods/{project_id}/files/{file_id}/download-url"
-    response = requests.get(url, headers=headers, timeout=10)
-    
-    if response.status_code == 200:
-        data = response.json().get("data")
-        if data:
-            return data
-        
+    # Si l'API ne répond pas (timeout, quota, panne), ce n'est pas bloquant :
+    # on sait reconstruire le lien CDN nous-mêmes juste en dessous.
+    try:
+        response = requests.get(url, headers=headers, timeout=HTTP_TIMEOUT)
+        if response.status_code == 200:
+            data = response.json().get("data")
+            if data:
+                return data
+    except Exception as e:
+        print(f"API CurseForge indisponible pour {filename} ({type(e).__name__}), passage par le CDN")
+
+
     # Si l'auteur a bloqué les téléchargements tiers, on recrée l'URL manuellement (Edge CDN)
     file_id_str = str(int(file_id))
     # Découpage correct pour les ID à 6 ou 7 chiffres (ex: 1234567 -> 1234 / 567)
@@ -178,14 +290,23 @@ def download_file_item(item: dict, target_dir: str, default_ext: str, on_progres
     # pointe bien vers un hôte connu avant d'écrire quoi que ce soit sur le disque.
     download_url = check_download_url(download_url)
 
-    # On ajoute une fausse "carte d'identité" (User-Agent) pour que Modrinth ne nous bloque pas
-    headers = {"User-Agent": "CommunityCraft-Launcher/3.0"}
+    # On ajoute une "carte d'identité" (User-Agent) pour que Modrinth ne nous bloque pas
+    headers = dict(HTTP_HEADERS)
 
-    # Téléchargement avec jusqu'à 3 essais (réseau instable) + vérification d'intégrité
+    # Téléchargement avec jusqu'à 4 essais (réseau instable) + vérification d'intégrité
     last_error = None
-    for attempt in range(1, 4):
+    for attempt in range(1, 5):
         try:
-            with requests.get(download_url, stream=True, timeout=60, headers=headers) as response:
+            with requests.get(download_url, stream=True, timeout=(10, 60), headers=headers) as response:
+                # Serveur saturé (429) ou en panne passagère (5xx) : ça vaut le coup
+                # de réessayer, en respectant le délai demandé s'il y en a un.
+                if response.status_code == 429 or response.status_code >= 500:
+                    wait = 2.0 * attempt
+                    try:
+                        wait = max(wait, min(float(response.headers.get("Retry-After", 0)), 15))
+                    except (TypeError, ValueError):
+                        pass
+                    raise Exception(f"serveur occupé (HTTP {response.status_code}), nouvelle tentative dans {wait:.0f}s")
                 response.raise_for_status()
                 with open(filepath, "wb") as f:
                     for chunk in response.iter_content(chunk_size=8192):
@@ -209,10 +330,10 @@ def download_file_item(item: dict, target_dir: str, default_ext: str, on_progres
                     os.remove(filepath)
             except:
                 pass
-            if attempt < 3:
-                time.sleep(1.5 * attempt)  # petite pause croissante avant de réessayer
+            if attempt < 4:
+                time.sleep(2.0 * attempt)  # pause croissante avant de réessayer
 
-    raise Exception(f"Échec du téléchargement de {filename} après 3 essais : {last_error}")
+    raise Exception(f"Échec du téléchargement de {filename} après 4 essais : {last_error}")
 
 
 def validate_mods() -> list:

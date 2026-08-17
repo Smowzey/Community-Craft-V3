@@ -27,7 +27,8 @@ from auth import (
     refresh_microsoft,
     validate_username,
 )
-from mod_manager import sync_mods, fetch_modpack, validate_mods, set_shaders_enabled
+from mod_manager import (sync_mods, fetch_modpack, validate_mods, set_shaders_enabled,
+                         HTTP_HEADERS)
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
@@ -38,7 +39,7 @@ FORGE_VERSION = "47.4.10"
 PACK_VERSION = "v3.1"
 
 # Version du launcher (utilisée pour l'auto-update)
-LAUNCHER_VERSION = "3.2.2"
+LAUNCHER_VERSION = "3.2.3"
 
 # Sources distantes (même dépôt GitHub que le modpack)
 GITHUB_RAW_BASE = "https://raw.githubusercontent.com/Smowzey/community-craft-v3/main"
@@ -590,7 +591,8 @@ class HomePage(ctk.CTkFrame):
     def _fetch_news(self):
         def fetch():
             try:
-                resp = requests.get(f"{NEWS_URL}?t={int(time.time())}", timeout=8)
+                resp = requests.get(f"{NEWS_URL}?t={int(time.time() // 60)}",
+                                    timeout=(10, 20), headers=HTTP_HEADERS)
                 if resp.status_code != 200:
                     return
                 data = resp.json()
@@ -1743,7 +1745,8 @@ class LauncherApp(ctk.CTk):
         """Vérifie au démarrage si une nouvelle version du launcher est disponible."""
         def check():
             try:
-                resp = requests.get(f"{UPDATE_URL}?t={int(time.time())}", timeout=8)
+                resp = requests.get(f"{UPDATE_URL}?t={int(time.time() // 60)}",
+                                    timeout=(10, 20), headers=HTTP_HEADERS)
                 if resp.status_code != 200:
                     return
                 data = resp.json()
@@ -1808,8 +1811,8 @@ class LauncherApp(ctk.CTk):
                 new_path = os.path.join(exe_dir, "update_tmp.exe")
 
                 digest = hashlib.sha256()
-                with requests.get(url, stream=True, timeout=180,
-                                  headers={"User-Agent": "CommunityCraft-Launcher/3.2"}) as r:
+                with requests.get(url, stream=True, timeout=(10, 180),
+                                  headers=HTTP_HEADERS) as r:
                     r.raise_for_status()
                     with open(new_path, "wb") as f:
                         for chunk in r.iter_content(chunk_size=65536):
